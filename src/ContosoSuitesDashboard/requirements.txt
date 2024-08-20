@@ -1,7 +1,7 @@
 pandas
 numpy
 scikit-learn
-streamlit==1.29.0
+streamlit==1.37.0
 streamlit-extras==0.3.6
 streamlit_js_eval==0.1.5
 openai==1.12.0
