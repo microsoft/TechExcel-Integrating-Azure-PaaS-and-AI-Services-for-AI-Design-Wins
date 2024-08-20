@@ -76,6 +76,22 @@ resource deployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01
   }
 }
 
+resource deployment2 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01' = {
+  parent: openAI
+  name: 'text-embedding-3-small'
+  sku: {
+    name: 'Standard'
+    capacity: 90
+  }
+  properties: {
+    model: {
+      format: 'OpenAI'
+      name: 'text-embedding-3-small'
+      version: '1'
+    }
+  }
+}
+
 resource speechService 'Microsoft.CognitiveServices/accounts@2021-04-30' = {
   name: speechServiceName
   location: location
