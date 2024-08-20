@@ -1,0 +1,155 @@
+[
+  {
+    "resort name": "Aruba Noord",
+    "nation": "Aruba",
+    "city": "Noord",
+    "beachfront": true,
+    "restaurant": true,
+    "amenities": [
+      "Spa",
+      "Pool",
+      "Deck",
+      "Massage",
+      "Gym"
+    ]
+  },
+  {
+    "resort name": "Aruba Oranjestad",
+    "nation": "Aruba",
+    "city": "Oranjestad",
+    "beachfront": true,
+    "restaurant": true,
+    "amenities": [
+      "Spa",
+      "Pool",
+      "Casino",
+      "Fitness Center"
+    ]
+  },
+  {
+    "resort name": "Bonaire Kralendijk",
+    "nation": "Bonaire",
+    "city": "Kralendijk",
+    "beachfront": false,
+    "restaurant": true,
+    "amenities": [
+      "Pool",
+      "Dive Center",
+      "Bike Rental"
+    ]
+  },
+  {
+    "resort name": "Bonaire Santa Barbara",
+    "nation": "Bonaire",
+    "city": "Santa Barbara",
+    "beachfront": true,
+    "restaurant": false,
+    "amenities": [
+      "Pool",
+      "Snorkeling",
+      "Kayaking"
+    ]
+  },
+  {
+    "resort name": "Curacao Willemstad",
+    "nation": "Curacao",
+    "city": "Willemstad",
+    "beachfront": true,
+    "restaurant": true,
+    "amenities": [
+      "Spa",
+      "Pool",
+      "Casino",
+      "Conference Rooms"
+    ]
+  },
+  {
+    "resort name": "Curacao Westpunt",
+    "nation": "Curacao",
+    "city": "Westpunt",
+    "beachfront": true,
+    "restaurant": false,
+    "amenities": [
+      "Pool",
+      "Dive Shop",
+      "Hiking Trails"
+    ]
+  },
+  {
+    "resort name": "Bahamas Nassau",
+    "nation": "Bahamas",
+    "city": "Nassau",
+    "beachfront": true,
+    "restaurant": true,
+    "amenities": [
+      "Spa",
+      "Pool",
+      "Water Slide",
+      "Golf Course"
+    ]
+  },
+  {
+    "resort name": "Bahamas Freeport",
+    "nation": "Bahamas",
+    "city": "Freeport",
+    "beachfront": true,
+    "restaurant": false,
+    "amenities": [
+      "Spa",
+      "Pool",
+      "Tennis Courts",
+      "Marina"
+    ]
+  },
+  {
+    "resort name": "Virgin Islands Road Town",
+    "nation": "British Virgin Islands",
+    "city": "Road Town",
+    "beachfront": false,
+    "restaurant": true,
+    "amenities": [
+      "Pool",
+      "Sailing Charters",
+      "Fitness Center"
+    ]
+  },
+  {
+    "resort name": "Virgin Islands Virgin Gorda",
+    "nation": "British Virgin Islands",
+    "city": "Virgin Gorda",
+    "beachfront": true,
+    "restaurant": true,
+    "amenities": [
+      "Spa",
+      "Infinity Pool",
+      "Snorkeling",
+      "Hiking Trails"
+    ]
+  },
+  {
+    "resort name": "Puerto Rico San Juan",
+    "nation": "Puerto Rico",
+    "city": "San Juan",
+    "beachfront": true,
+    "restaurant": true,
+    "amenities": [
+      "Casino",
+      "Pool",
+      "Live Entertainment",
+      "Conference Facilities"
+    ]
+  },
+  {
+    "resort name": "Puerto Rico Ponce",
+    "nation": "Puerto Rico",
+    "city": "Ponce",
+    "beachfront": false,
+    "restaurant": true,
+    "amenities": [
+      "Golf Course",
+      "Pool",
+      "Art Museum",
+      "Historical Tours"
+    ]
+  }
+]

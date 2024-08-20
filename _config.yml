@@ -1,0 +1,25 @@
+title: Integrating Azure PaaS and AI Services for AI Design Wins
+description: This lab teaches you how to integrate Azure OpenAI and Azure AI Services into existing business practices. You will experiment with a variety of Azure OpenAI and Azure AI Services capabilities, including vectorization of existing files, performing chat based on a customer's dataset, making API calls through Azure OpenAI, transcribing recorded and live audio, checking audio for compliance purposes, and generating extractive and abstractive call summaries from audio recordings.
+theme: just-the-docs
+
+# url: https://microsoft.github.io/TechExcel-Integrating-Azure-PaaS-and-AI-Services-for-AI-Design-Wins/
+
+aux_links:
+  "TechExcel: Integrating Azure PaaS and AI Services for AI Design Wins": 
+    - "https://github.com/microsoft/TechExcel-Integrating-Azure-PaaS-and-AI-Services-for-AI-Design-Wins"
+callouts_level: quiet # or loud
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note 
+    color: purple
+  warning:
+    title: Warning
+    color: red

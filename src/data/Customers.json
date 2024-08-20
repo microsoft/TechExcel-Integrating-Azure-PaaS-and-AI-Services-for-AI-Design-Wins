@@ -1,0 +1,695 @@
+[
+  {
+    "FirstName": "Amber",
+    "LastName": "Rodriguez",
+    "FullName": "Amber Rodriguez",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 11,
+    "DateOfMostRecentStay": "2023-08-09",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Ana",
+    "LastName": "Bowman",
+    "FullName": "Ana Bowman",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 11,
+    "DateOfMostRecentStay": "2023-09-15",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Dakota",
+    "LastName": "Sanchez",
+    "FullName": "Dakota Sanchez",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 24,
+    "DateOfMostRecentStay": "2023-06-03",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Amari",
+    "LastName": "Rivera",
+    "FullName": "Amari Rivera",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 32,
+    "DateOfMostRecentStay": "2023-07-07",
+    "AverageRating": 4.5
+  },
+  {
+    "FirstName": "Briana",
+    "LastName": "Hernandez",
+    "FullName": "Briana Hernandez",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 31,
+    "DateOfMostRecentStay": "2023-07-31",
+    "AverageRating": 4.1
+  },
+  {
+    "FirstName": "Aaron",
+    "LastName": "Gonzales",
+    "FullName": "Aaron Gonzales",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 17,
+    "DateOfMostRecentStay": "2023-03-25",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Eric",
+    "LastName": "Solomon",
+    "FullName": "Eric Solomon",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 13,
+    "DateOfMostRecentStay": "2023-03-16",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Avery",
+    "LastName": "Howard",
+    "FullName": "Avery Howard",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 15,
+    "DateOfMostRecentStay": "2023-07-29",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Jessie",
+    "LastName": "Irwin",
+    "FullName": "Jessie Irwin",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 8,
+    "DateOfMostRecentStay": "2023-11-01",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Corey",
+    "LastName": "Gray",
+    "FullName": "Corey Gray",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 17,
+    "DateOfMostRecentStay": "2023-04-19",
+    "AverageRating": 4.1
+  },
+  {
+    "FirstName": "Kayla",
+    "LastName": "Lewis",
+    "FullName": "Kayla Lewis",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 23,
+    "DateOfMostRecentStay": "2023-04-30",
+    "AverageRating": 4.4
+  },
+  {
+    "FirstName": "Joseph",
+    "LastName": "Price",
+    "FullName": "Joseph Price",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 31,
+    "DateOfMostRecentStay": "2023-07-12",
+    "AverageRating": 3.9
+  },
+  {
+    "FirstName": "Ashley",
+    "LastName": "Schroeder",
+    "FullName": "Ashley Schroeder",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 8,
+    "DateOfMostRecentStay": "2023-02-14",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Juan",
+    "LastName": "Morgan",
+    "FullName": "Juan Morgan",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 5,
+    "DateOfMostRecentStay": "2023-07-03",
+    "AverageRating": 4.3
+  },
+  {
+    "FirstName": "Lisa",
+    "LastName": "Taylor",
+    "FullName": "Lisa Taylor",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 24,
+    "DateOfMostRecentStay": "2023-03-16",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Andre",
+    "LastName": "Lawson",
+    "FullName": "Andre Lawson",
+    "LoyaltyTier": "Bronze",
+    "YearsAsMember": 7,
+    "DateOfMostRecentStay": "2023-05-26",
+    "AverageRating": 4
+  },
+  {
+    "FirstName": "Eugenia",
+    "LastName": "Lopez",
+    "FullName": "Eugenia Lopez",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 23,
+    "DateOfMostRecentStay": "2023-06-15",
+    "AverageRating": 3.9
+  },
+  {
+    "FirstName": "Riley",
+    "LastName": "Ramirez",
+    "FullName": "Riley Ramirez",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 25,
+    "DateOfMostRecentStay": "2023-07-11",
+    "AverageRating": 4
+  },
+  {
+    "FirstName": "Malik",
+    "LastName": "Barden",
+    "FullName": "Malik Barden",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 14,
+    "DateOfMostRecentStay": "2023-02-11",
+    "AverageRating": 4.6
+  },
+  {
+    "FirstName": "Shawn",
+    "LastName": "Hughes",
+    "FullName": "Shawn Hughes",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 13,
+    "DateOfMostRecentStay": "2023-08-29",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Dylan",
+    "LastName": "Williams",
+    "FullName": "Dylan Williams",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 21,
+    "DateOfMostRecentStay": "2023-02-17",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Graham",
+    "LastName": "Barnes",
+    "FullName": "Graham Barnes",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 4,
+    "DateOfMostRecentStay": "2023-07-15",
+    "AverageRating": 4.3
+  },
+  {
+    "FirstName": "Maya",
+    "LastName": "Robinson",
+    "FullName": "Maya Robinson",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 7,
+    "DateOfMostRecentStay": "2023-01-29",
+    "AverageRating": 4.4
+  },
+  {
+    "FirstName": "Abigail",
+    "LastName": "Jackson",
+    "FullName": "Abigail Jackson",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 4,
+    "DateOfMostRecentStay": "2023-05-09",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Jordan",
+    "LastName": "Mitchell",
+    "FullName": "Jordan Mitchell",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 9,
+    "DateOfMostRecentStay": "2023-05-27",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Hayden",
+    "LastName": "Cook",
+    "FullName": "Hayden Cook",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 11,
+    "DateOfMostRecentStay": "2023-03-07",
+    "AverageRating": 4
+  },
+  {
+    "FirstName": "Cameron",
+    "LastName": "Baker",
+    "FullName": "Cameron Baker",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 12,
+    "DateOfMostRecentStay": "2023-05-27",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Caleb",
+    "LastName": "Foster",
+    "FullName": "Caleb Foster",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 9,
+    "DateOfMostRecentStay": "2023-10-17",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Monica",
+    "LastName": "Thompson",
+    "FullName": "Monica Thomson",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 20,
+    "DateOfMostRecentStay": "2023-03-22",
+    "AverageRating": 4.4
+  },
+  {
+    "FirstName": "Mateo",
+    "LastName": "Gomez",
+    "FullName": "Mateo Gomez",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 9,
+    "DateOfMostRecentStay": "2023-06-28",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Olivia",
+    "LastName": "Wilson",
+    "FullName": "Olivia Wilson",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 7,
+    "DateOfMostRecentStay": "2023-06-24",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Wesley",
+    "LastName": "Brooks",
+    "FullName": "Wesley Brooks",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 32,
+    "DateOfMostRecentStay": "2023-05-07",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Kiana",
+    "LastName": "Anderson",
+    "FullName": "Kiana Anderson",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 16,
+    "DateOfMostRecentStay": "2023-06-22",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Reed",
+    "LastName": "Flores",
+    "FullName": "Reed Flores",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 6,
+    "DateOfMostRecentStay": "2023-11-10",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Quincy",
+    "LastName": "Watson",
+    "FullName": "Quincy Watson",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 26,
+    "DateOfMostRecentStay": "2023-07-07",
+    "AverageRating": 4.6
+  },
+  {
+    "FirstName": "Morgan",
+    "LastName": "Connors",
+    "FullName": "Morgan Connors",
+    "LoyaltyTier": "Silver",
+    "YearsAsMember": 15,
+    "DateOfMostRecentStay": "2023-01-31",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Quinn",
+    "LastName": "Campbell",
+    "FullName": "Quinn Campbell",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 8,
+    "DateOfMostRecentStay": "2023-09-23",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Hailey",
+    "LastName": "Clark",
+    "FullName": "Hailey Clark",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 19,
+    "DateOfMostRecentStay": "2023-10-24",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Violet",
+    "LastName": "Martinez",
+    "FullName": "Violet Martinez",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 22,
+    "DateOfMostRecentStay": "2023-02-16",
+    "AverageRating": 4.3
+  },
+  {
+    "FirstName": "Natasha",
+    "LastName": "Jones",
+    "FullName": "Natasha Jones",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 17,
+    "DateOfMostRecentStay": "2023-06-03",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Anthony",
+    "LastName": "Ivanov",
+    "FullName": "Anthony Ivanov",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 12,
+    "DateOfMostRecentStay": "2023-03-05",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Taylor",
+    "LastName": "Phillips",
+    "FullName": "Taylor Phillips",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 26,
+    "DateOfMostRecentStay": "2023-08-12",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Kai",
+    "LastName": "Carter",
+    "FullName": "Kai Carter",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 34,
+    "DateOfMostRecentStay": "2023-05-08",
+    "AverageRating": 4
+  },
+  {
+    "FirstName": "Serena",
+    "LastName": "Davis",
+    "FullName": "Serena Davis",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 9,
+    "DateOfMostRecentStay": "2023-09-12",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Robin",
+    "LastName": "Kline",
+    "FullName": "Robin Kline",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 23,
+    "DateOfMostRecentStay": "2023-07-03",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Henry",
+    "LastName": "Ross",
+    "FullName": "Henry Ross",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 22,
+    "DateOfMostRecentStay": "2023-09-14",
+    "AverageRating": 4.4
+  },
+  {
+    "FirstName": "Cora",
+    "LastName": "Thomas",
+    "FullName": "Cora Thomas",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 3,
+    "DateOfMostRecentStay": "2023-01-31",
+    "AverageRating": 3.9
+  },
+  {
+    "FirstName": "Ellis",
+    "LastName": "Turner",
+    "FullName": "Ellis Turner",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 18,
+    "DateOfMostRecentStay": "2023-07-09",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Elizabeth",
+    "LastName": "Moore",
+    "FullName": "Elizabeth Moore",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 15,
+    "DateOfMostRecentStay": "2023-03-03",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Preston",
+    "LastName": "Morales",
+    "FullName": "Preston Morales",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 13,
+    "DateOfMostRecentStay": "2023-03-22",
+    "AverageRating": 4.6
+  },
+  {
+    "FirstName": "Markus",
+    "LastName": "Long",
+    "FullName": "Markus Long",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 25,
+    "DateOfMostRecentStay": "2023-04-13",
+    "AverageRating": 4.1
+  },
+  {
+    "FirstName": "William",
+    "LastName": "Beringer",
+    "FullName": "William Beringer",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 28,
+    "DateOfMostRecentStay": "2023-09-28",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Maria",
+    "LastName": "Sullivan",
+    "FullName": "Maria Sullivan",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 7,
+    "DateOfMostRecentStay": "2023-11-01",
+    "AverageRating": 4.1
+  },
+  {
+    "FirstName": "Gabriel",
+    "LastName": "Diaz",
+    "FullName": "Gabriel Diaz",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 14,
+    "DateOfMostRecentStay": "2023-04-23",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Devon",
+    "LastName": "Torres",
+    "FullName": "Devon Torres",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 15,
+    "DateOfMostRecentStay": "2023-02-07",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Parker",
+    "LastName": "McLean",
+    "FullName": "Parker McLean",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 12,
+    "DateOfMostRecentStay": "2023-09-21",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Omar",
+    "LastName": "Bennett",
+    "FullName": "Omar Bennett",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 18,
+    "DateOfMostRecentStay": "2023-11-05",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Rory",
+    "LastName": "Nguyen",
+    "FullName": "Rory Nyuyen",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 35,
+    "DateOfMostRecentStay": "2023-07-30",
+    "AverageRating": 3.8
+  },
+  {
+    "FirstName": "Sam",
+    "LastName": "Cantrell",
+    "FullName": "Sam Centrell",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 29,
+    "DateOfMostRecentStay": "2023-06-09",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Kendall",
+    "LastName": "Collins",
+    "FullName": "Kendall Collins",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 8,
+    "DateOfMostRecentStay": "2023-11-04",
+    "AverageRating": 4.5
+  },
+  {
+    "FirstName": "Tomas",
+    "LastName": "Richardson",
+    "FullName": "Tomas Richardson",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 5,
+    "DateOfMostRecentStay": "2023-03-26",
+    "AverageRating": 4.6
+  },
+  {
+    "FirstName": "Jacob",
+    "LastName": "Hancock",
+    "FullName": "Jacob Hancock",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 31,
+    "DateOfMostRecentStay": "2023-02-17",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Remy",
+    "LastName": "Morris",
+    "FullName": "Remy Morris",
+    "LoyaltyTier": "Gold",
+    "YearsAsMember": 7,
+    "DateOfMostRecentStay": "2023-02-27",
+    "AverageRating": 4.1
+  },
+  {
+    "FirstName": "Madison",
+    "LastName": "Butler",
+    "FullName": "Madison Butler",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 7,
+    "DateOfMostRecentStay": "2023-07-23",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Casey",
+    "LastName": "Jensen",
+    "FullName": "Casey Jensen",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 6,
+    "DateOfMostRecentStay": "2023-11-07",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Felix",
+    "LastName": "Henderson",
+    "FullName": "Felix Henderson",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 32,
+    "DateOfMostRecentStay": "2023-03-06",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Vance",
+    "LastName": "DeLeon",
+    "FullName": "Vance DeLeon",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 13,
+    "DateOfMostRecentStay": "2023-02-06",
+    "AverageRating": 5
+  },
+  {
+    "FirstName": "Mario",
+    "LastName": "Rogers",
+    "FullName": "Mario Rogers",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 14,
+    "DateOfMostRecentStay": "2023-04-06",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Oscar",
+    "LastName": "Ward",
+    "FullName": "Oscar Ward",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 3,
+    "DateOfMostRecentStay": "2023-05-23",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Victoria",
+    "LastName": "Burke",
+    "FullName": "Victoria Burke",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 18,
+    "DateOfMostRecentStay": "2023-03-25",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Sydney",
+    "LastName": "Mattos",
+    "FullName": "Sydney Mattos",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 20,
+    "DateOfMostRecentStay": "2023-05-30",
+    "AverageRating": 3.9
+  },
+  {
+    "FirstName": "Rowan",
+    "LastName": "Murphy",
+    "FullName": "Rowan Murphy",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 14,
+    "DateOfMostRecentStay": "2023-09-01",
+    "AverageRating": 4.2
+  },
+  {
+    "FirstName": "Renata",
+    "LastName": "Hall",
+    "FullName": "Renata Hall",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 12,
+    "DateOfMostRecentStay": "2023-01-29",
+    "AverageRating": 4.7
+  },
+  {
+    "FirstName": "Nicole",
+    "LastName": "Wagner",
+    "FullName": "Nicole Wagner",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 26,
+    "DateOfMostRecentStay": "2023-03-09",
+    "AverageRating": 4
+  },
+  {
+    "FirstName": "Mikaela",
+    "LastName": "Lee",
+    "FullName": "Mikaela Lee",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 9,
+    "DateOfMostRecentStay": "2023-05-11",
+    "AverageRating": 4.9
+  },
+  {
+    "FirstName": "Hannah",
+    "LastName": "Jarvis",
+    "FullName": "Hannah Jarvis",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 9,
+    "DateOfMostRecentStay": "2023-02-04",
+    "AverageRating": 4.8
+  },
+  {
+    "FirstName": "Michael",
+    "LastName": "Peltier",
+    "FullName": "Michael Peltier",
+    "LoyaltyTier": "Platinum",
+    "YearsAsMember": 11,
+    "DateOfMostRecentStay": "2023-07-22",
+    "AverageRating": 3.9
+  }
+]

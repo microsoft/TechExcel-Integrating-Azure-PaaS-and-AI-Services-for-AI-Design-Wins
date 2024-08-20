@@ -1,0 +1,10 @@
+{
+    "AOAIEndpoint": "YOUR ENDPOINT",
+    "AOAIKey": "YOUR KEY",
+    "AOAIDeploymentName": "gpt-4",
+    "SearchEndpoint": "YOUR ENDPOINT",
+    "SearchKey": "YOUR KEY",
+    "SearchIndex": "resorts",
+    "SpeechKey": "YOUR KEY",
+    "SpeechRegion": "eastus2"
+}
