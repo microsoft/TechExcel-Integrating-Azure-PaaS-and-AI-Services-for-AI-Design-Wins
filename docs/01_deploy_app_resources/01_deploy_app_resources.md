@@ -17,9 +17,9 @@ In this first exercise, we will set the stage for Contoso Suites by deploying ou
 
 After you complete this lab, you will be able to:
 
-* Deploy a Bicep script to build Azure resources
-* Create an Azure OpenAI Service resource
-* Install Python and necessary Python packages on a local machine
+* Deploy Bicep scripts to build Azure resources
+* Load data into Azure AI Search and query it from code
+* Deploy applications to Azure App Services
 
 ## Lab Duration
 

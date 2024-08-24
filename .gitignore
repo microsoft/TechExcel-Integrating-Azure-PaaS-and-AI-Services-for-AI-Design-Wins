@@ -6,6 +6,10 @@
 # Virtual environments
 openai/
 
+secrets.toml
+Chat_with_Data_Full.py
+Call_Center_Full.py
+
 # User-specific files
 *.rsuser
 *.suo
