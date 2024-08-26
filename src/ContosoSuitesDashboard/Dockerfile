@@ -13,6 +13,5 @@ RUN pip3 install -r requirements.txt
     # aoai: endpoint, key, deployment_name
     # search: endpoint, key, index_name
     # speech: key, region
-COPY ./.streamlit/ ./.streamlit/
-EXPOSE 8501
-ENTRYPOINT ["streamlit", "run", "Index.py", "--server.port=8501", "--server.address=0.0.0.0"]
+EXPOSE 80
+ENTRYPOINT ["streamlit", "run", "Index.py", "--server.port=80", "--server.address=0.0.0.0"]
