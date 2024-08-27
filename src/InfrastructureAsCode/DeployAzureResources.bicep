@@ -16,6 +16,7 @@ param deployments array = [
 ]
 
 var cosmosDbName = '${uniqueString(resourceGroup().id)}-cosmosdb'
+var cosmosDbDatabaseName = 'ContosoSuites'
 var storageAccountName = '${uniqueString(resourceGroup().id)}sa'
 var searchServiceName = '${uniqueString(resourceGroup().id)}-search'
 var openAIName = '${uniqueString(resourceGroup().id)}-openai'
@@ -37,7 +38,7 @@ var locations = [
   }
 ]
 
-resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' = {
+resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
   name: cosmosDbName
   location: location
   kind: 'GlobalDocumentDB'
@@ -47,6 +48,16 @@ resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' = {
     }
     databaseAccountOfferType: 'Standard'
     locations: locations
+  }
+}
+
+resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2023-04-15' = {
+  parent: cosmosDbAccount
+  name: cosmosDbDatabaseName
+  properties: {
+    resource: {
+      id: cosmosDbDatabaseName
+    }
   }
 }
 
