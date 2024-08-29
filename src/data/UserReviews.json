@@ -1,235 +1,274 @@
 [  
-  {  
+  {
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 10754,  
+    "user_id": 10754,  
     "rating": 5,  
     "text": "My stay at Oceanview Inn was fantastic! The free breakfast was delicious and had a variety of options. I loved that the rooms were non-smoking and the digital key made everything so convenient. Highly recommend!"  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 22931,  
+    "user_id": 22931,  
     "rating": 4,  
     "text": "Oceanview Inn at Aruba Noord is a great place to stay if you're looking for a relaxing vacation. The covered parking and EV charging stations were really helpful. The staff were friendly, and the rooms were clean and comfortable."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 31789,  
+    "user_id": 31789,  
     "rating": 3,  
     "text": "I stayed at Oceanview Inn for a business trip and found it a bit lacking in terms of business facilities since there's no business center. However, the meeting rooms were well-equipped and the overall ambiance of the hotel was pleasant."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 15824,  
+    "user_id": 15824,  
     "rating": 5,  
     "text": "I recently hosted a reception in the ballroom at Oceanview Inn and it was a huge success! The staff were attentive and the venue was beautiful. The free breakfast was a nice perk for my guests who stayed overnight."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 20345,  
+    "user_id": 20345,  
     "rating": 4,  
     "text": "Overall, I had a good experience at Oceanview Inn. The digital key was a neat feature, and I appreciated the non-smoking rooms. However, I wish there were more amenities for business travelers. Still, it's a solid choice for a vacation stay."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 11290,  
+    "user_id": 11290,  
     "rating": 5,  
     "text": "Oceanview Inn was perfect for our family vacation. The free breakfast was tasty, and having self-parking made it easy to come and go as we pleased. The room was spacious and clean. We will definitely be back!"  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 27549,  
+    "user_id": 27549,  
     "rating": 4,  
     "text": "Great stay at Oceanview Inn! The EV charging station was a big plus for us. The hotel is well-maintained and the staff were super friendly. The breakfast options were plentiful and tasty. Highly recommended."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 3287,  
+    "user_id": 3287,  
     "rating": 4,  
     "text": "I had a pleasant stay at Oceanview Inn. The digital key system was very convenient and the hotel was clean and comfortable. The free breakfast was a nice touch. Would definitely stay here again."  
   },
   { 
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn", 
-    "userId": 36210,  
+    "user_id": 36210,  
     "rating": 5,  
     "text": "Oceanview Inn exceeded all my expectations! From the moment I arrived, the staff made me feel welcome. The non-smoking rooms were a huge plus for me, and the digital key was super convenient. The free breakfast had a great selection, and the food was always fresh. I also appreciated the covered parking and EV charging, which made my stay even more hassle-free. I'll definitely be coming back!"  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 29145,  
+    "user_id": 29145,  
     "rating": 3,  
     "text": "I had a decent stay at Oceanview Inn. The rooms were clean and comfortable, and the free breakfast was good. However, I was there for business and found the lack of a business center inconvenient. The meeting rooms were nice, but I really needed a space to work quietly. For vacationers, this place is great, but for business travelers, it may not meet all your needs."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 17532,  
+    "user_id": 17532,  
     "rating": 4,  
     "text": "Stayed at Oceanview Inn for a week and overall, it was a pleasant experience. The staff were friendly and the digital key was very user-friendly. I loved the free breakfast every morning, it gave me a good start to the day. The hotel is well-maintained and having self-parking was a bonus. The only downside was that the Wi-Fi could be faster. Other than that, great place to stay!"  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 8149,  
+    "user_id": 8149,  
     "rating": 5,  
     "text": "My family and I had an amazing time at Oceanview Inn. The rooms were spacious and clean, and the kids loved the free breakfast options. The non-smoking environment was perfect for us, and the digital key made everything so much easier. We also used the EV charging station, which was very convenient. The staff went above and beyond to make our stay enjoyable. Highly recommend this hotel!"  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 25467,  
+    "user_id": 25467,  
     "rating": 4,  
     "text": "Oceanview Inn offers a great balance of comfort and convenience. I was particularly impressed with the covered parking and the availability of EV charging stations. The free breakfast was a nice touch and had a variety of options to choose from. The rooms were clean and the digital key was a modern touch that I appreciated. The only improvement I would suggest is better Wi-Fi connectivity."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 11205,  
+    "user_id": 11205,  
     "rating": 4,  
     "text": "We had our wedding reception at Oceanview Inn and it was simply beautiful. The ballroom was elegant and spacious, and the staff were extremely helpful throughout the planning process. Many of our guests stayed overnight and loved the free breakfast and clean, non-smoking rooms. The digital key was also a hit! Thank you, Oceanview Inn, for making our special day even more memorable."  
   },  
   {  
+    "hotel_id": 1, 
     "hotel": "Oceanview Inn",
-    "userId": 21456,  
+    "user_id": 21456,  
     "rating": 5,  
     "text": "I can't say enough good things about Oceanview Inn. The location in Aruba Noord is perfect for a relaxing getaway. The hotel itself is well-kept and the rooms are comfortable. I really appreciated the non-smoking policy and the digital key system. The free breakfast was excellent, with plenty of choices each day. Covered parking and self-parking options made it easy for us to come and go. This is definitely a top-notch hotel!"  
   },  
-{  
-    "hotel": "Airport Gateway Hotel",  
-    "userId": 34567,  
+{
+    "hotel_id": 5,
+    "hotel": "Airport Gateway Hotel",
+    "user_id": 34567,  
     "rating": 4,  
     "text": "I had a pleasant stay at the Airport Gateway Hotel. The non-smoking rooms were clean and comfortable, and the digital key system was very convenient. The business center was well-equipped, making it easy for me to get work done."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 17249,  
+    "user_id": 17249,  
     "rating": 5,  
     "text": "This hotel is perfect for business travelers! The four meeting rooms were exactly what we needed for our conference, and the business center was a lifesaver. The staff were professional and helpful. I also appreciated the covered parking, which was very convenient. Highly recommend!"  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 23514,  
+    "user_id": 23514,  
     "rating": 3,  
     "text": "Airport Gateway Hotel was decent, but I was disappointed that there was no free breakfast. The rooms were clean and the digital key was a nice touch, but I expected more amenities for the price. The covered parking was a plus, though."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 19482,  
+    "user_id": 19482,  
     "rating": 4,  
     "text": "Stayed here for a business trip and found it very convenient. The business center had everything I needed and the meeting rooms were spacious and well-maintained. The lack of free breakfast was a bit of a letdown, but the hotel made up for it with excellent service and comfortable rooms."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 37890,  
+    "user_id": 37890,  
     "rating": 5,  
     "text": "Had an amazing stay at the Airport Gateway Hotel! The digital key system made check-in and access to my room so easy. The non-smoking rooms were clean and fresh. The ballroom was perfect for our reception, and the staff went above and beyond to ensure everything went smoothly. Will definitely stay here again!"  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 15234,  
+    "user_id": 15234,  
     "rating": 3,  
     "text": "Overall, my experience at the Airport Gateway Hotel was okay. The rooms were comfortable and the digital key was a nice feature. However, I was disappointed that there was no free breakfast and no EV charging stations. The covered parking was convenient, but I expected more amenities."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 12457,  
+    "user_id": 12457,  
     "rating": 4,  
     "text": "I stayed at the Airport Gateway Hotel for a week-long business trip and found it to be very accommodating. The business center was excellent, and the meeting rooms were perfect for our needs. The hotel itself was clean and the staff were friendly and professional. The only downside was the lack of free breakfast, but there were plenty of dining options nearby."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 29876,  
+    "user_id": 29876,  
     "rating": 5,  
     "text": "This hotel is a gem for business travelers! The business center was top-notch, and the meeting rooms were well-equipped and spacious. The digital key system made everything so convenient, and the non-smoking rooms were a big plus. The staff were incredibly helpful and the covered parking was very convenient. Highly recommend this hotel for anyone traveling to Nassau on business."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 20374,  
+    "user_id": 20374,  
     "rating": 2,  
     "text": "I was not very impressed with my stay at the Airport Gateway Hotel. The lack of free breakfast was annoying and the meeting rooms did not have all of the amenities I expected given the price."
   },
 {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 11987,  
+    "user_id": 11987,  
     "rating": 4,  
     "text": "I had a very comfortable stay at the Airport Gateway Hotel. The digital key system was very efficient and easy to use. The rooms were clean and well-maintained, and the staff were friendly. The covered parking was a big plus, especially since I didn't have to worry about my car being exposed to the elements."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 34781,  
+    "user_id": 34781,  
     "rating": 5,  
     "text": "We hosted our annual company retreat at the Airport Gateway Hotel, and it was a great experience. The meeting rooms were perfect for our needs, and the business center was very useful. The staff were attentive and ensured that everything went smoothly. The ballroom was also a beautiful space for our evening reception. The only thing missing was a free breakfast, but there were plenty of nearby options. Overall, a fantastic experience!"  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 30567,  
+    "user_id": 30567,  
     "rating": 3,  
     "text": "The Airport Gateway Hotel is a decent option if you're looking for a place to stay near the airport. The rooms were clean and the digital key system was convenient. However, the lack of free breakfast and EV charging stations was disappointing. The covered parking was nice, but I feel like the hotel could offer more amenities for the price."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 9182,  
+    "user_id": 9182,  
     "rating": 4,  
     "text": "I stayed at this hotel for a business trip and was mostly satisfied with my experience. The business center was well-equipped and the meeting rooms were spacious. The digital key system made check-in and room access very convenient. The only downside was the lack of free breakfast, but the overall service and facilities were great."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 23789,  
+    "user_id": 23789,  
     "rating": 5,  
     "text": "Airport Gateway Hotel is an excellent choice for both business and leisure travelers. The non-smoking rooms were clean and comfortable, and the digital key system was a modern touch that I appreciated. The business center and meeting rooms were top-notch, making it easy to get work done. I also found the covered parking to be very convenient. Highly recommend this hotel!"  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 14205,  
+    "user_id": 14205,  
     "rating": 3,  
     "text": "I had an okay stay at the Airport Gateway Hotel. The rooms were clean and the digital key system was useful. However, I was disappointed by the lack of free breakfast and EV charging stations. The covered parking was a nice feature, but I expected more amenities for the price."  
   },  
   {  
+    "hotel_id": 5,
     "hotel": "Airport Gateway Hotel",  
-    "userId": 28103,  
+    "user_id": 28103,  
     "rating": 4,  
     "text": "I stayed here for a week during a business trip and found it to be very accommodating. The business center had everything I needed, and the meeting rooms were perfect for our needs. The lack of free breakfast was a bit of a letdown, but the hotel made up for it with excellent service and comfortable rooms. The digital key system was also very convenient."  
   },  
-  {  
+  {
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 12456,  
+    "user_id": 12456,  
     "rating": 5,  
     "text": "I had a wonderful stay at The Traveler's Rest! The free breakfast was delicious and had a variety of options. The rooms were clean and non-smoking, which was a big plus for me. The staff were friendly and helpful. Highly recommend for a relaxing vacation."  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 35321,  
+    "user_id": 35321,  
     "rating": 4,  
     "text": "The Traveler's Rest is a great place to stay in Freeport. The rooms are comfortable and the free breakfast is a nice bonus. I appreciated the covered parking and the convenience of self-parking. The only downside was the lack of a digital key, but overall, a very pleasant experience."  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 18754,  
+    "user_id": 18754,  
     "rating": 3,  
     "text": "My stay at The Traveler's Rest was average. The rooms were clean and non-smoking, which was good. The free breakfast was decent but nothing special. I missed having a digital key for convenience. It's a decent option for a short stay, but there are areas for improvement."  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 26578,  
+    "user_id": 26578,  
     "rating": 2,  
     "text": "I was a bit disappointed with my stay at The Traveler's Rest. The rooms were clean, but the lack of a digital key was inconvenient. The breakfast was okay, but I've had better at other hotels. The meeting room was small and not very well-equipped. Not sure if I would stay here again."  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 32045,  
+    "user_id": 32045,  
     "rating": 4,  
     "text": "The Traveler's Rest offers a cozy and comfortable stay. The free breakfast was a nice touch, and the rooms were clean and non-smoking. The self-parking and covered parking were very convenient. I didn't need a business center, so that wasn't an issue for me. Overall, a good experience."  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 15432,  
+    "user_id": 15432,  
     "rating": 3,  
     "text": "Stayed here for a few nights and found it to be okay. The free breakfast was decent, and the rooms were clean. The lack of a digital key was a minor inconvenience, but the staff were friendly and helpful. The hotel could use some updates, but it's a decent option for a short stay."  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 28976,  
+    "user_id": 28976,  
     "rating": 5,  
     "text": "I had a fantastic stay at The Traveler's Rest! The free breakfast was delicious, and the rooms were comfortable and non-smoking. The staff were incredibly friendly and went out of their way to make my stay enjoyable. The covered parking was a great convenience. Highly recommend!"  
   },  
   {  
+    "hotel_id": 9,
     "hotel": "The Traveler's Rest",  
-    "userId": 17432,  
+    "user_id": 17432,  
     "rating": 2,  
     "text": "I was not very impressed with The Traveler's Rest. The rooms were clean, but the lack of a digital key and business center was inconvenient. The free breakfast was mediocre, and the meeting room was too small for our needs. There are better options in Freeport."  
   }

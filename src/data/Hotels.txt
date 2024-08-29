@@ -1,5 +1,6 @@
 [
   {
+    "hotel_id": 1,
     "hotel name": "Oceanview Inn",
     "resort name": "Aruba Noord",
     "free breakfast": true,
@@ -14,6 +15,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 2,
     "hotel name": "Metro Business Hotel",
     "resort name": "Puerto Rico Ponce",
     "free breakfast": false,
@@ -28,6 +30,7 @@
     "self-parking": false
   },
   {
+    "hotel_id": 3,
     "hotel name": "Grand Regency",
     "resort name": "Puerto Rico San Juan",
     "free breakfast": true,
@@ -42,6 +45,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 4,
     "hotel name": "Beautiful Inn",
     "resort name": "Virgin Islands Virgin Gorda",
     "free breakfast": true,
@@ -56,6 +60,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 5,
     "hotel name": "Airport Gateway Hotel",
     "resort name": "Bahamas Nassau",
     "free breakfast": false,
@@ -70,6 +75,7 @@
     "self-parking": false
   },
   {
+    "hotel_id": 6,
     "hotel name": "City Center Boutique Hotel",
     "resort name": "Bonaire Kralendijk",
     "free breakfast": true,
@@ -84,6 +90,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 7,
     "hotel name": "The Palms Resort & Spa",
     "resort name": "Aruba Oranjestad",
     "free breakfast": false,
@@ -98,6 +105,7 @@
     "self-parking": false
   },
   {
+    "hotel_id": 8,
     "hotel name": "Heritage Grand Hotel",
     "resort name": "Bonaire Santa Barbara",
     "free breakfast": true,
@@ -112,6 +120,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 9,
     "hotel name": "The Traveler's Rest",
     "resort name": "Bahamas Freeport",
     "free breakfast": true,
@@ -126,6 +135,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 10,
     "hotel name": "The Executive Suites",
     "resort name": "Curacao Westpunt",
     "free breakfast": false,
@@ -140,6 +150,7 @@
     "self-parking": false
   },
   {
+    "hotel_id": 11,
     "hotel name": "The Sunrise Retreat",
     "resort name": "Virgin Islands Road Town",
     "free breakfast": true,
@@ -154,6 +165,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 12,
     "hotel name": "The Downtown Plaza Hotel",
     "resort name": "Bahamas Nassau",
     "free breakfast": false,
@@ -168,6 +180,7 @@
     "self-parking": false
   },
   {
+    "hotel_id": 13,
     "hotel name": "Seaside Luxury Resort",
     "resort name": "Curacao Willemstad",
     "free breakfast": false,
@@ -182,6 +195,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 14,
     "hotel name": "Mountain View Inn",
     "resort name": "Puerto Rico Ponce",
     "free breakfast": true,
@@ -196,6 +210,7 @@
     "self-parking": true
   },
   {
+    "hotel_id": 15,
     "hotel name": "The Urban Hotel",
     "resort name": "Curacao Willemstad",
     "free breakfast": true,
