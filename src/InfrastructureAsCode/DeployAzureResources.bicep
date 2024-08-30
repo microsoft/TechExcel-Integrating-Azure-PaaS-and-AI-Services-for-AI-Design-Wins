@@ -15,6 +15,9 @@ param deployments array = [
   }
 ]
 
+@description('Restore the service instead of creating a new instance. This is useful if you previously soft-delted the service and want to restore it. If you are restoring a service, set this to true. Otherwise, leave this as false.')
+param restore bool = false
+
 var cosmosDbName = '${uniqueString(resourceGroup().id)}-cosmosdb'
 var cosmosDbDatabaseName = 'ContosoSuites'
 var storageAccountName = '${uniqueString(resourceGroup().id)}sa'
@@ -38,6 +41,7 @@ var locations = [
   }
 ]
 
+@description('Creates an Azure Cosmos DB NoSQL account.')
 resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
   name: cosmosDbName
   location: location
@@ -51,6 +55,7 @@ resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
   }
 }
 
+@description('Creates an Azure Cosmos DB NoSQL API database.')
 resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@2023-04-15' = {
   parent: cosmosDbAccount
   name: cosmosDbDatabaseName
@@ -61,6 +66,7 @@ resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@20
   }
 }
 
+@description('Creates an Azure Storage account.')
 resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   name: storageAccountName
   location: location
@@ -73,6 +79,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   }
 }
 
+@description('Creates an Azure AI Search service.')
 resource searchService 'Microsoft.Search/searchServices@2022-09-01' = {
   name: searchServiceName
   location: location
@@ -81,15 +88,19 @@ resource searchService 'Microsoft.Search/searchServices@2022-09-01' = {
   }
 }
 
+@description('Creates an Azure OpenAI resource.')
 resource openAI 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
   name: openAIName
   location: location
   kind: 'OpenAI'
   sku: {
     name: 'S0'
+    tier: 'Standard'
   }
   properties: {
+    customSubDomainName: openAIName
     publicNetworkAccess: 'Enabled'
+    restore: restore
   }
 }
 
@@ -110,6 +121,7 @@ resource deployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01
   }
 }]
 
+@description('Creates an Azure AI Services Speech service.')
 resource speechService 'Microsoft.CognitiveServices/accounts@2021-04-30' = {
   name: speechServiceName
   location: location
@@ -118,10 +130,13 @@ resource speechService 'Microsoft.CognitiveServices/accounts@2021-04-30' = {
     name: 'S0'
   }
   properties: {
+    customSubDomainName: speechServiceName
     publicNetworkAccess: 'Enabled'
+    restore: restore
   }
 }
 
+@description('Creates an Azure Log Analytics workspace.')
 resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
   name: logAnalyticsName
   location: location
@@ -136,6 +151,7 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-12
   }
 }
 
+@description('Creates an Azure Application Insights resource.')
 resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
   name: appInsightsName
   location: location
@@ -146,6 +162,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
   }
 }
 
+@description('Creates an Azure Container Registry.')
 resource containerRegistry 'Microsoft.ContainerRegistry/registries@2020-11-01-preview' = {
   name: registryName
   location: location
@@ -157,6 +174,7 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2020-11-01-pr
   }
 }
 
+@description('Creates an Azure App Service Plan.')
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-09-01' = {
   name: appServicePlanName
   location: location
@@ -169,6 +187,7 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2022-09-01' = {
   }
 }
 
+@description('Creates an Azure App Service for the API.')
 resource appServiceApp 'Microsoft.Web/sites@2020-12-01' = {
   name: webAppNameApi
   location: location
@@ -207,6 +226,7 @@ resource appServiceApp 'Microsoft.Web/sites@2020-12-01' = {
     }
 }
 
+@description('Creates an Azure App Service for the Dashboard.')
 resource appServiceAppDash 'Microsoft.Web/sites@2020-12-01' = {
   name: webAppNameDash
   location: location
