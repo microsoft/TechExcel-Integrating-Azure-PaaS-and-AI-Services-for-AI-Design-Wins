@@ -22,8 +22,9 @@ var cosmosDbName = '${uniqueString(resourceGroup().id)}-cosmosdb'
 var cosmosDbDatabaseName = 'ContosoSuites'
 var storageAccountName = '${uniqueString(resourceGroup().id)}sa'
 var searchServiceName = '${uniqueString(resourceGroup().id)}-search'
-var openAIName = '${uniqueString(resourceGroup().id)}-openai'
-var speechServiceName = '${uniqueString(resourceGroup().id)}-speech'
+var openAIName = '${uniqueString(resourceGroup().id)}2-openai'
+var speechServiceName = '${uniqueString(resourceGroup().id)}2-speech'
+var languageServiceName = '${uniqueString(resourceGroup().id)}-lang'
 var webAppNameApi = '${uniqueString(resourceGroup().id)}-api'
 var webAppNameDash = '${uniqueString(resourceGroup().id)}-dash'
 var appServicePlanName = '${uniqueString(resourceGroup().id)}-cosu-asp'
@@ -67,7 +68,7 @@ resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@20
 }
 
 @description('Creates an Azure Storage account.')
-resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: storageAccountName
   location: location
   sku: {
@@ -80,7 +81,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
 }
 
 @description('Creates an Azure AI Search service.')
-resource searchService 'Microsoft.Search/searchServices@2022-09-01' = {
+resource searchService 'Microsoft.Search/searchServices@2023-11-01' = {
   name: searchServiceName
   location: location
   sku: {
@@ -89,7 +90,7 @@ resource searchService 'Microsoft.Search/searchServices@2022-09-01' = {
 }
 
 @description('Creates an Azure OpenAI resource.')
-resource openAI 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
+resource openAI 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: openAIName
   location: location
   kind: 'OpenAI'
@@ -122,7 +123,7 @@ resource deployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01
 }]
 
 @description('Creates an Azure AI Services Speech service.')
-resource speechService 'Microsoft.CognitiveServices/accounts@2021-04-30' = {
+resource speechService 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: speechServiceName
   location: location
   kind: 'SpeechServices'
@@ -136,8 +137,23 @@ resource speechService 'Microsoft.CognitiveServices/accounts@2021-04-30' = {
   }
 }
 
+@description('Creates an Azure AI Services Language service.')
+resource languagteService 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
+  name: languageServiceName
+  location: location
+  kind: 'TextAnalytics'
+  sku: {
+    name: 'F0'
+  }
+  properties: {
+    customSubDomainName: languageServiceName
+    publicNetworkAccess: 'Enabled'
+    restore: restore
+  }
+}
+
 @description('Creates an Azure Log Analytics workspace.')
-resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
+resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' = {
   name: logAnalyticsName
   location: location
   properties: {
@@ -163,7 +179,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
 }
 
 @description('Creates an Azure Container Registry.')
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2020-11-01-preview' = {
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2022-12-01' = {
   name: registryName
   location: location
   sku: {
@@ -188,7 +204,7 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2022-09-01' = {
 }
 
 @description('Creates an Azure App Service for the API.')
-resource appServiceApp 'Microsoft.Web/sites@2020-12-01' = {
+resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
   name: webAppNameApi
   location: location
   properties: {
@@ -227,7 +243,7 @@ resource appServiceApp 'Microsoft.Web/sites@2020-12-01' = {
 }
 
 @description('Creates an Azure App Service for the Dashboard.')
-resource appServiceAppDash 'Microsoft.Web/sites@2020-12-01' = {
+resource appServiceAppDash 'Microsoft.Web/sites@2022-09-01' = {
   name: webAppNameDash
   location: location
   properties: {

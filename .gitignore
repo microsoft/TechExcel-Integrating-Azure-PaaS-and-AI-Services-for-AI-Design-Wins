@@ -7,8 +7,8 @@
 openai/
 
 secrets.toml
-Chat_with_Data_Full.py
-Call_Center_Full.py
+1_Chat_with_Data_solution.py
+4_Call_Center_solution.py
 
 # User-specific files
 *.rsuser

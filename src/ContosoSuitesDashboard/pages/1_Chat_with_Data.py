@@ -3,7 +3,14 @@ import openai
 
 st.set_page_config(layout="wide")
 
-def create_chat_completion(aoai_deployment_name, messages, aoai_endpoint, aoai_key, search_endpoint, search_key, search_index_name):
+def create_chat_completion(messages):
+    """Create and return a new chat completion request. Key assumptions:
+    - The Azure OpenAI endpoint, key, and deployment name are stored in Streamlit secrets."""
+
+    aoai_endpoint = st.secrets["aoai"]["endpoint"]
+    aoai_key = st.secrets["aoai"]["key"]
+    aoai_deployment_name = st.secrets["aoai"]["deployment_name"]
+
     client = openai.AzureOpenAI(
         api_key=aoai_key,
         api_version="2024-06-01",
@@ -16,25 +23,13 @@ def create_chat_completion(aoai_deployment_name, messages, aoai_endpoint, aoai_k
             {"role": m["role"], "content": m["content"]}
             for m in messages
         ],
-        stream=True,
-        extra_body={
-            "data_sources": [
-                {
-                    "type": "azure_search",
-                    "parameters": {
-                        "endpoint": search_endpoint,
-                        "index_name": search_index_name,
-                        "authentication": {
-                            "type": "api_key",
-                            "key": search_key
-                        }
-                    }
-                }
-            ]
-        }
+        stream=True
     )
 
-def handle_chat_prompt(prompt, aoai_deployment_name, aoai_endpoint, aoai_key, search_endpoint, search_key, search_index_name):
+def handle_chat_prompt(prompt):
+    """Echo the user's prompt to the chat window.
+    Then, send the user's prompt to Azure OpenAI and display the response."""
+
     # Echo the user's prompt to the chat window
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -47,7 +42,7 @@ def handle_chat_prompt(prompt, aoai_deployment_name, aoai_endpoint, aoai_key, se
     with st.chat_message("assistant"):
         message_placeholder = st.empty()
         full_response = ""
-        for response in create_chat_completion(aoai_deployment_name, st.session_state.messages, aoai_endpoint, aoai_key, search_endpoint, search_key, search_index_name):
+        for response in create_chat_completion(st.session_state.messages):
             if response.choices:
                 full_response += (response.choices[0].delta.content or "")
                 message_placeholder.markdown(full_response + "▌")
@@ -55,6 +50,8 @@ def handle_chat_prompt(prompt, aoai_deployment_name, aoai_endpoint, aoai_key, se
     st.session_state.messages.append({"role": "assistant", "content": full_response})
 
 def main():
+    """Main function for the Chat with Data Streamlit app."""
+
     st.write(
     """
     # Chat with Data
@@ -62,14 +59,6 @@ def main():
     This Streamlit dashboard is intended to show off capabilities of Azure OpenAI, including integration with AI Search.
     """
     )
-
-    aoai_endpoint = st.secrets["aoai"]["endpoint"]
-    aoai_key = st.secrets["aoai"]["key"]
-    aoai_deployment_name = st.secrets["aoai"]["deployment_name"]
-
-    search_endpoint = st.secrets["search"]["endpoint"]
-    search_key = st.secrets["search"]["key"]
-    search_index_name = st.secrets["search"]["index_name"]
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -82,7 +71,7 @@ def main():
 
     # Await a user message and handle the chat prompt when it comes in.
     if prompt := st.chat_input("Enter a message:"):
-        handle_chat_prompt(prompt, aoai_deployment_name, aoai_endpoint, aoai_key, search_endpoint, search_key, search_index_name)
+        handle_chat_prompt(prompt)
 
 if __name__ == "__main__":
     main()

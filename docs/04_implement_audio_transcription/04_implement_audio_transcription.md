@@ -9,17 +9,17 @@ has_children: true
 
 ## Lab Scenario
 
-So far, we have looked at two common scenarios for extending the capabilities of OpenAI chat services: bringing your own data and function completion. There are other ways to bring OpenAI intelligence to customer support agents, and the second half of this training will cover a big quality of life improvements for customer support agents: audio transcription and intelligent operations based on audio recordings.
-
-In this exercise, you will incorporate speech to text capabilities into the existing Streamlit dashboard, allowing users to speak their requests to the chat service you have created.
+A common use case for call centers is interpreting and transcribing speech from telephone calls, as well as analyzing the contents of these calls. In a real-world scenario, customers may have hooks into their telephony systems that enable programmatic access to the live audio streams. In this exercise, you will use a simpler case: pre-recorded audio files that you can upload into the dashboard application and process.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-* Create an Azure AI Services Speech service and test it using the OpenAI Studio Chat playground
-* Incorporate speech to text into the existing chat completions solution
+* Incorporate audio file upload and audio transcription into a Streamlit app
+* Check whether a call meets compliance requirements
+* Vectorize and save call transcripts and summaries into Cosmos DB
+* Perform vector search among call summaries and transcripts
 
 ## Lab Duration
 
-* **Estimated Time:** 60 minutes
+* **Estimated Time:** 90 minutes
