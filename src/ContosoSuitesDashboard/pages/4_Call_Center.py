@@ -88,29 +88,54 @@ def is_call_in_compliance(call_contents, include_recording_message, is_relevant_
     return "This is a placeholder result. Fill in with real compliance analysis."
 
 @st.cache_data
-def generate_query_based_summary(call_contents):
-    """Generate a query-based summary of a call transcript."""
-
-    return "This is a placeholder result. Fill in with real query-based summary."
-
-@st.cache_data
 def generate_extractive_summary(call_contents):
     """Generate an extractive summary of a call transcript. Key assumptions:
-    - Azure Text Analytics endpoint and key stored in Streamlit secrets."""
+    - Azure AI Services Language service endpoint and key stored in Streamlit secrets."""
+
+    language_endpoint = st.secrets["language"]["endpoint"]
+    language_key = st.secrets["language"]["key"]
+
+    # The call_contents parameter is formatted as a list of strings.
+    # Join them together with spaces to pass in as a single document.
+    joined_call_contents = ' '.join(call_contents)
 
     return "This is a placeholder result. Fill in with real extractive summary."
 
 @st.cache_data
 def generate_abstractive_summary(call_contents):
     """Generate an abstractive summary of a call transcript. Key assumptions:
-    - Azure Text Analytics endpoint and key stored in Streamlit secrets."""
+    - Azure AI Services Language service endpoint and key stored in Streamlit secrets."""
+
+    language_endpoint = st.secrets["language"]["endpoint"]
+    language_key = st.secrets["language"]["key"]
+
+    # The call_contents parameter is formatted as a list of strings.
+    # Join them together with spaces to pass in as a single document.
+    joined_call_contents = ' '.join(call_contents)
 
     return "This is a placeholder result. Fill in with real abstractive summary."
 
 @st.cache_data
+def generate_query_based_summary(call_contents):
+    """Generate a query-based summary of a call transcript."""
+
+    # The call_contents parameter is formatted as a list of strings.
+    # Join them together with spaces to pass in as a single document.
+    joined_call_contents = ' '.join(call_contents)
+
+    return "This is a placeholder result. Fill in with real query-based summary."
+
+@st.cache_data
 def create_sentiment_analysis_and_opinion_mining_request(call_contents):
     """Analyze the sentiment of a call transcript and mine opinions. Key assumptions:
-    - Azure Text Analytics endpoint and key stored in Streamlit secrets."""
+    - Azure AI Services Language service endpoint and key stored in Streamlit secrets."""
+
+    language_endpoint = st.secrets["language"]["endpoint"]
+    language_key = st.secrets["language"]["key"]
+
+    # The call_contents parameter is formatted as a list of strings.
+    # Join them together with spaces to pass in as a single document.
+    joined_call_contents = ' '.join(call_contents)
 
     return "This is a placeholder result. Fill in with real sentiment analysis."
 
