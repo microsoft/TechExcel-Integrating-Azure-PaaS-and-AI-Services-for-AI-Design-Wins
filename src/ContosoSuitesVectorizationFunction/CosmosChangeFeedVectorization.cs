@@ -47,7 +47,7 @@ namespace ContosoSuites.Functions
             LeaseContainerName = "leases",
             CreateLeaseContainerIfNotExists = true)] IReadOnlyList<MaintenanceTask> input)
         {
-            IReadOnlyList<MaintenanceTask> documentsToVectorize = input.Where(t => t.Type != "Vectorized");
+            var documentsToVectorize = input.Where(t => t.Type != "Vectorized");
             if (documentsToVectorize.Count() == 0) return null;
 
             foreach (var task in documentsToVectorize)
@@ -69,7 +69,7 @@ namespace ContosoSuites.Functions
             }
 
             // Write the updated documents back to Cosmos DB.
-            return documentsToVectorize;
+            return input;
         }
     }
 
