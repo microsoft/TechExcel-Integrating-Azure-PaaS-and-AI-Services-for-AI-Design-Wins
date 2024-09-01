@@ -28,6 +28,8 @@ var languageServiceName = '${uniqueString(resourceGroup().id)}-lang'
 var webAppNameApi = '${uniqueString(resourceGroup().id)}-api'
 var webAppNameDash = '${uniqueString(resourceGroup().id)}-dash'
 var appServicePlanName = '${uniqueString(resourceGroup().id)}-cosu-asp'
+var functionAppName = '${uniqueString(resourceGroup().id)}-cosu-fn'
+var functionAppServicePlanName = '${uniqueString(resourceGroup().id)}-cosu-fn-asp'
 var logAnalyticsName = '${uniqueString(resourceGroup().id)}-cosu-la'
 var appInsightsName = '${uniqueString(resourceGroup().id)}-cosu-ai'
 var webAppSku = 'S1'
@@ -281,6 +283,56 @@ resource appServiceAppDash 'Microsoft.Web/sites@2022-09-01' = {
     }
 }
 
+resource functionAppServicePlan 'Microsoft.Web/serverFarms@2022-09-01' = {
+  name: functionAppServicePlanName
+  location: location
+  sku: {
+    name: 'Y1'
+    tier: 'Dynamic'
+  }
+  properties: {}
+}
+
+resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
+  name: functionAppName
+  location: location
+  kind: 'functionapp'
+  properties: {
+    serverFarmId: functionAppServicePlan.id
+    siteConfig: {
+      appSettings: [
+        {
+          name: 'AzureWebJobsStorage'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storageAccountName};EndpointSuffix=${environment().suffixes.storage};AccountKey=${storageAccount.listKeys().keys[0].value}'
+        }
+        {
+          name: 'WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED'
+          value: '1'
+        }
+        {
+          name: 'FUNCTIONS_EXTENSION_VERSION'
+          value: '~4'
+        }
+        {
+          name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
+          value: appInsights.properties.ConnectionString
+        }
+        {
+          name: 'FUNCTIONS_WORKER_RUNTIME'
+          value: 'dotnet-isolated'
+        }
+      ]
+      ftpsState: 'FtpsOnly'
+      minTlsVersion: '1.2'
+      netFrameworkVersion: 'v8.0'
+    }
+    httpsOnly: true
+    virtualNetworkSubnetId: null
+    publicNetworkAccess: 'Enabled'
+    clientAffinityEnabled: false
+  }
+}
+
 output cosmosDbEndpoint string = cosmosDbAccount.properties.documentEndpoint
 output storageAccountName string = storageAccount.name
 output searchServiceName string = searchService.name
@@ -291,3 +343,4 @@ output application_url string = appServiceApp.properties.hostNames[0]
 output container_registry_name string = containerRegistry.name
 output application_name_dash string = appServiceAppDash.name
 output application_url_dash string = appServiceAppDash.properties.hostNames[0]
+output function_app_name string = functionApp.name
