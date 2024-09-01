@@ -13,8 +13,8 @@ namespace ContosoSuites.Functions
     {
         private readonly ILogger _logger;
         private readonly EmbeddingClient _embeddingClient;
-        private const string DatabaseName = "ContosoSuites";
-        private const string ContainerName = "MaintenanceTasks";
+        const string DatabaseName = "ContosoSuites";
+        const string ContainerName = "MaintenanceRequests";
 
         public CosmosChangeFeedVectorization(ILoggerFactory loggerFactory)
         {
@@ -34,38 +34,37 @@ namespace ContosoSuites.Functions
             var oaiEndpoint = new Uri(endpointUrl);
             var credentials = new AzureKeyCredential(azureOpenAIKey);
             var openAIClient = new AzureOpenAIClient(oaiEndpoint, credentials);
-            _embeddingClient = openAIClient.GetEmbeddingClient(deploymentName);
-            
+            _embeddingClient = openAIClient.GetEmbeddingClient(deploymentName);   
         }
 
-        [Function("VectorizeMaintenanceTasks")]
+        [Function("VectorizeMaintenanceRequests")]
         [CosmosDBOutput(DatabaseName, ContainerName, Connection = "CosmosDBConnectionString")]
         public object Run([CosmosDBTrigger(
             databaseName: DatabaseName,
             containerName: ContainerName,
             Connection = "CosmosDBConnectionString",
             LeaseContainerName = "leases",
-            CreateLeaseContainerIfNotExists = true)] IReadOnlyList<MaintenanceTask> input)
+            CreateLeaseContainerIfNotExists = true)] IReadOnlyList<MaintenanceRequest> input)
         {
             var documentsToVectorize = input.Where(t => t.Type != "Vectorized");
             if (documentsToVectorize.Count() == 0) return null;
 
-            foreach (var task in documentsToVectorize)
+            foreach (var request in documentsToVectorize)
             {
                 try
                 {
-                    // Generate the content vector for the maintenance task.
-                    var embedding = _embeddingClient.GenerateEmbedding(task.Details);
+                    // Generate the content vector for the maintenance request.
+                    var embedding = _embeddingClient.GenerateEmbedding(request.Details);
                     var requestVector = embedding.Value.Vector;
 
-                    // Add the vector embeddings to the maintenance task and mark it as vectorized.
-                    task.RequestVector = requestVector.ToArray();
-                    task.Type = "Vectorized";
-                    _logger.LogInformation($"Generated vector embeddings for maintenance task {task.Id}");
+                    // Add the vector embeddings to the maintenance request and mark it as vectorized.
+                    request.RequestVector = requestVector.ToArray();
+                    request.Type = "Vectorized";
+                    _logger.LogInformation($"Generated vector embeddings for maintenance request {request.Id}");
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, $"Error generating vector embeddings for maintenance task {task.Id}");
+                    _logger.LogError(ex, $"Error generating vector embeddings for maintenance request {request.Id}");
                 }
             }
 
@@ -75,9 +74,9 @@ namespace ContosoSuites.Functions
     }
 
     /// <summary>
-    /// Represents a maintenance task.
+    /// Represents a maintenance request.
     /// </summary>
-    public class MaintenanceTask
+    public class MaintenanceRequest
     {
         [JsonPropertyName("id")]
         public string Id { get; set; }
