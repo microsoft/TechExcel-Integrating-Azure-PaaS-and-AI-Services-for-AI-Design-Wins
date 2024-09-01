@@ -1,6 +1,8 @@
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
+using ContosoSuitesWebAPI.Entities;
 using ContosoSuitesWebAPI.Services;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ICosmosService, CosmosService>();
+builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
@@ -48,6 +51,27 @@ app.MapGet("/Customer", async (string searchCriterion, string searchValue) =>
     return customer;
 })
     .WithName("GetCustomer")
+    .WithOpenApi();
+
+app.MapGet("/Hotels", async () => 
+{
+    throw new NotImplementedException();
+})
+    .WithName("GetHotels")
+    .WithOpenApi();
+
+app.MapGet("/Hotels/{hotelId}/Bookings/", async (int hotelId) => 
+{
+    throw new NotImplementedException();
+})
+    .WithName("GetBookingsForHotel")
+    .WithOpenApi();
+
+app.MapGet("/Hotels/{hotelId}/Bookings/{min_date}", async (int hotelId, DateTime min_date) => 
+{
+    throw new NotImplementedException();
+})
+    .WithName("GetRecentBookingsForHotel")
     .WithOpenApi();
 
 app.Run();

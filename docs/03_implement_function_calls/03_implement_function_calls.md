@@ -9,15 +9,15 @@ has_children: true
 
 ## Lab Scenario
 
-Bringing our own data is one great way to enhance GPT models in Azure OpenAI, allowing them to answer questions specific to our circumstances. Another way to customize responses and enhance system capabilities involves function calling, a native way for GPT models to formulate API calls and structure data outputs based on the functions we specify. In this exercise, you will create a function to supplement chat conversations with customer data.
+Bringing our own data is one great way to enhance GPT models in Azure OpenAI, allowing them to answer questions specific to our circumstances. Another way to customize responses and enhance system capabilities involves function calling, something we can implement using the Semantic Kernel library. In this exercise, you will create a solution allowing end users to query data from Azure SQL Database using natural language.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-* Implement a customer account information lookup API endpoint against Cosmos DB using C#
-* Create a function in Python to perform customer account lookup as part of a broader conversation
-* Incorporate function calling into the existing chat completions solution
+* Implement hotel bookings history endpoints against Azure SQL Database using C#
+* Create Semantic Kernel plugins to enable translation of natural language into SQL queries
+* Incorporate API results into the Streamlit application
 
 ## Lab Duration
 
