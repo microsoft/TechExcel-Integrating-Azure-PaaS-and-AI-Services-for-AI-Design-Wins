@@ -56,15 +56,16 @@ namespace ContosoSuites.Functions
                 {
                     // Generate the content vector for the maintenance task.
                     var embedding = _embeddingClient.GenerateEmbedding(task.Details);
-                    var contentVector = embedding.Value.Vector;
-                    // Add the content vector to the maintenance task and mark it as vectorized.
-                    task.ContentVector = contentVector.ToArray();
+                    var requestVector = embedding.Value.Vector;
+
+                    // Add the vector embeddings to the maintenance task and mark it as vectorized.
+                    task.RequestVector = requestVector.ToArray();
                     task.Type = "Vectorized";
-                    _logger.LogInformation($"Generated content vector for maintenance task {task.Id}");
+                    _logger.LogInformation($"Generated vector embeddings for maintenance task {task.Id}");
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, $"Error generating content vector for maintenance task {task.Id}");
+                    _logger.LogError(ex, $"Error generating vector embeddings for maintenance task {task.Id}");
                 }
             }
 
@@ -115,7 +116,7 @@ namespace ContosoSuites.Functions
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? Location { get; set; }
 
-        [JsonPropertyName("content_vector")]
-        public float[]? ContentVector { get; set; }
+        [JsonPropertyName("request_vector")]
+        public float[]? RequestVector { get; set; }
     }
 }
