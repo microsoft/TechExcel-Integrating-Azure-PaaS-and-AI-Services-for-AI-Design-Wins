@@ -9,7 +9,7 @@ has_children: true
 
 ## Lab Scenario
 
-Vector search provides a powerful technique for efficiently finding information within blocks of text. Using Azure Cosmos DB, vector embeddings generated using Azure OpenAI can be stored alongside data. In this exercise, you will add vector search capabilities to Azure Cosmos DB for NoSQL and integrate search functionality into the Consoso Suites Customer Information System (CIS) and Bookings applications.
+Vector search provides a powerful technique for efficiently finding information within blocks of text. Using Azure Cosmos DB, vector embeddings generated using Azure OpenAI can be stored alongside data. In this exercise, you will add vector search capabilities to Azure Cosmos DB for NoSQL and perform similarity searches using the vectorized data.
 
 ## Objectives
 
