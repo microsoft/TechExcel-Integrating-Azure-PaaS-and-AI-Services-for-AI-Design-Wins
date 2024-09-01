@@ -1,6 +1,9 @@
 @description('Location of the resources')
 param location string = resourceGroup().location
 
+@description('Password for the SQL Server admin user. PLEASE CHANGE THIS BEFORE DEPLOYMENT!')
+param sqlAdminPassword string = 'n8&tJA@RZ2qVB!vX'
+
 @description('Deployments for OpenAI')
 param deployments array = [
   {
@@ -33,6 +36,9 @@ var appInsightsName = '${uniqueString(resourceGroup().id)}-cosu-ai'
 var webAppSku = 'S1'
 var registryName = '${uniqueString(resourceGroup().id)}cosureg'
 var registrySku = 'Standard'
+var sqlServerName = '${uniqueString(resourceGroup().id)}-sqlserver'
+var sqlDatabaseName = 'ContosoSuitesBookings'
+var sqlAdminUsername = 'contosoadmin'
 
 var locations = [
   {
@@ -64,6 +70,31 @@ resource cosmosDbDatabase 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases@20
     resource: {
       id: cosmosDbDatabaseName
     }
+  }
+}
+
+@description('Creates an Azure SQL Server.')
+resource sqlServer 'Microsoft.Sql/servers@2021-11-01' = {
+  name: sqlServerName
+  location: location
+  properties: {
+    administratorLogin: sqlAdminUsername
+    administratorLoginPassword: sqlAdminPassword
+  }
+}
+
+@description('Creates an Azure SQL Database.')
+resource sqlDatabase 'Microsoft.Sql/servers/databases@2021-11-01' = {
+  parent: sqlServer
+  name: sqlDatabaseName
+  location: location
+  properties: {
+    collation: 'SQL_Latin1_General_CP1_CI_AS'
+  }
+  sku: {
+    name: 'S2'
+    tier: 'Standard'
+    capacity: 50
   }
 }
 
