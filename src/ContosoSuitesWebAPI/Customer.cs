@@ -8,9 +8,9 @@ public enum LoyaltyTier
 
 public class Customer
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string FullName { get; set; }
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+    public required string FullName { get; set; }
     public LoyaltyTier LoyaltyTier { get; set; }
     public int YearsAsMember { get; set; }
     public DateTime DateOfMostRecentStay { get; set; }
