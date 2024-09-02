@@ -53,7 +53,7 @@ namespace ContosoSuites.Functions
             {
                 try
                 {
-                    // Generate the content vector for the maintenance request.
+                    // Generate a vector for the maintenance request.
                     var embedding = _embeddingClient.GenerateEmbedding(request.Details);
                     var requestVector = embedding.Value.Vector;
 
