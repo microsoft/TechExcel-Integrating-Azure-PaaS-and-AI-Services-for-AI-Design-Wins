@@ -3,6 +3,9 @@ using Microsoft.Azure.Cosmos;
 using ContosoSuitesWebAPI.Entities;
 using ContosoSuitesWebAPI.Services;
 using Microsoft.Data.SqlClient;
+using Azure.AI.OpenAI;
+using Azure;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +16,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<ICosmosService, CosmosService>();
 builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
+builder.Services.AddSingleton<IVectorizationService, VectorizationService>();
 
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
     CosmosClient client = new(
         connectionString: builder.Configuration["AZURE_COSMOS_DB_CONNECTION_STRING"]!
     );
+    return client;
+});
+
+builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
+{
+    var endpoint = new Uri(builder.Configuration["AZURE_OPENAI_ENDPOINT"]!);
+    var credentials = new AzureKeyCredential(builder.Configuration["AZURE_OPENAI_API_KEY"]!);
+
+    var client = new AzureOpenAIClient(endpoint, credentials);
     return client;
 });
 
@@ -81,6 +94,14 @@ app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
     return "This endpoint is not yet available.";
 })
     .WithName("Chat")
+    .WithOpenApi();
+
+app.MapGet("/Vectorize", async (string text, [FromServices] IVectorizationService vectorizationService) =>
+{
+    var embeddings = await vectorizationService.GetEmbeddings(text);
+    return embeddings;
+})
+    .WithName("Vectorize")
     .WithOpenApi();
 
 app.Run();

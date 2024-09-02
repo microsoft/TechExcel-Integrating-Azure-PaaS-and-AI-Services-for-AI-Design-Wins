@@ -1,11 +1,11 @@
 ---
-title: 'Exercise 02: Implement contextual grounding using vector search in Azure Cosmos DB NoSQL'
+title: 'Exercise 03: Implement contextual grounding using vector search in Azure Cosmos DB NoSQL'
 layout: default
-nav_order: 3
+nav_order: 4
 has_children: true
 ---
 
-# Exercise 02 - Implement contextual grounding using vector search in Azure Cosmos DB for NoSQL
+# Exercise 03 - Implement contextual grounding using vector search in Azure Cosmos DB for NoSQL
 
 ## Lab Scenario
 
@@ -23,4 +23,4 @@ After you complete this lab, you will be able to:
 
 ## Lab Duration
 
-- **Estimated Time:** 60 minutes
+- **Estimated Time:** 75 minutes
