@@ -17,6 +17,13 @@ def get_hotel_bookings(hotel_id):
     response = requests.get(f"{api_endpoint}/Hotels/{hotel_id}/Bookings", timeout=10)
     return response
 
+@st.cache_data
+def invoke_chat_endpoint(question):
+    """Invoke the chat endpoint with the specified question."""
+    api_endpoint = st.secrets["api"]["endpoint"]
+    response = requests.post(f"{api_endpoint}/Chat", data={"message": question}, timeout=10)
+    return response
+
 def main():
     """Main function for the Chat with Data Streamlit app."""
 
@@ -45,6 +52,25 @@ def main():
         bookings = get_hotel_bookings(hotel_id).json()
         st.write("### Bookings")
         st.table(bookings)
+
+    st.write(
+        """
+        ## Ask a Bookings Question
+
+        Enter a question about hotel bookings in the text box below.
+        Then select the "Submit" button to call the Chat endpoint.
+        """
+    )
+
+    question = st.text_input("Question:", key="question")
+    if st.button("Submit"):
+        with st.spinner("Calling Chat endpoint..."):
+            if question:
+                response = invoke_chat_endpoint(question)
+                st.write(response.text)
+                st.success("Chat endpoint called successfully.")
+            else:
+                st.warning("Please enter a question.")
 
 if __name__ == "__main__":
     main()
