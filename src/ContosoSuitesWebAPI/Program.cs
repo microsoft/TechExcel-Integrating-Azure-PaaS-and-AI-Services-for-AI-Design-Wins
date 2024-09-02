@@ -104,4 +104,12 @@ app.MapGet("/Vectorize", async (string text, [FromServices] IVectorizationServic
     .WithName("Vectorize")
     .WithOpenApi();
 
+app.MapPost("/VectorSearch", async ([FromBody] float[] queryVector, [FromServices] IVectorizationService vectorizationService, int count = 0) =>
+{
+    var results = await vectorizationService.ExecuteVectorSearch(queryVector, count);
+    return results;
+})
+    .WithName("VectorSearch")
+    .WithOpenApi();
+
 app.Run();
