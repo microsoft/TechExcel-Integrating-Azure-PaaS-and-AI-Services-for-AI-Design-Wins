@@ -1,11 +1,11 @@
 ---
-title: 'Exercise 03: Implement function calling'
+title: 'Exercise 02: Implement function calling'
 layout: default
-nav_order: 4
+nav_order: 3
 has_children: true
 ---
 
-# Exercise 03 - Implement function calling to integrate with external APIs
+# Exercise 02 - Implement function calling to integrate with external APIs
 
 ## Lab Scenario
 

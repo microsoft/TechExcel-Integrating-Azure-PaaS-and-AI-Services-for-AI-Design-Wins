@@ -13,8 +13,8 @@ def main():
 
     Pages include:
     1. Chat with Data. Used in Exercise 01.
-    2. Vector Search. Used in Exercise 02.
-    3. API Integration. Used in Exercise 03.
+    2. API Integration. Used in Exercise 02.
+    3. Vector Search. Used in Exercise 03.
     4. Call Center. Used in Exercise 04.
     5. Call Center Search. Used in Exercise 04.
     """

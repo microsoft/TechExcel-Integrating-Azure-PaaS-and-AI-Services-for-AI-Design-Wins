@@ -14,10 +14,12 @@ This lab has exercises on:
 
 * Deploy app resources
 * Add chat with data
-* Implement function calls
+* Implement function calls using Semantic Kernel
+* Implement vector search using the Cosmos DB NoSQL API
 * Implement audio transcription
-* Provide live audio transcription
 * Generate a call summary
+* Perform compliance checks and vector search against transcripts
+* Orchestrate agents with Semantic Kernel
 
 The lab is available as GitHub pages [here](https://microsoft.github.io/TechExcel-Integrating-Azure-PaaS-and-AI-Services-for-AI-Design-Wins)
 
