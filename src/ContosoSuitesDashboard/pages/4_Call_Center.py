@@ -1,13 +1,14 @@
 import json
 import time
 import re
-import tiktoken
 import streamlit as st
 from scipy.io import wavfile
 import azure.cognitiveservices.speech as speechsdk
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.textanalytics import ExtractiveSummaryAction, AbstractiveSummaryAction
+from azure.core.exceptions import AzureError
+from azure.cosmos import CosmosClient, PartitionKey
 import openai
 
 
@@ -310,7 +311,7 @@ def perform_sentiment_analysis_and_opinion_mining():
     else:
         st.error("Please upload an audio file before attempting to analyze sentiment.")
 
-def perform_saved_embeddings_to_cosmos_db():
+def perform_save_embeddings_to_cosmos_db():
     """Save embeddings to Cosmos DB vector store."""
 
     # Set call_contents to file_transcription_results.
@@ -394,7 +395,7 @@ def main():
             st.write(st.session_state.sentiment_and_mined_opinions)
     with db:
         if st.button("Save embeddings to Cosmos DB"):
-            perform_saved_embeddings_to_cosmos_db()
+            perform_save_embeddings_to_cosmos_db()
 
         # Write the embedding_status value to the Streamlit dashboard.
         if 'embedding_status' in st.session_state:

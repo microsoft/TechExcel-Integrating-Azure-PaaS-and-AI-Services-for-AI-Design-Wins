@@ -1,6 +1,7 @@
 import re
-import tiktoken
 import streamlit as st
+from azure.core.exceptions import AzureError
+from azure.cosmos import CosmosClient, PartitionKey
 
 
 
@@ -19,6 +20,28 @@ def normalize_text(s):
 
     return s
 
+def insert_call_transcript(call_id, call_transcript):
+    """Insert a call transcript into Cosmos DB."""
+    
+    cosmos_endpoint = st.secrets["cosmos"]["endpoint"]
+    cosmos_key = st.secrets["cosmos"]["key"]
+    cosmos_database_name = st.secrets["cosmos"]["database_name"]
+    cosmos_container_name = "CallTranscripts"
+
+    # Create a CosmosClient
+    client = CosmosClient(url=cosmos_endpoint, credential=cosmos_key)
+
+    database = client.get_database_client(cosmos_database_name)
+    container = database.get_container_client(cosmos_container_name)
+
+    transcript_item = {
+        "call_id": call_id,
+        "call_transcript": call_transcript
+    }
+
+    # Insert the call transcript
+    container.upsert_item(call_transcript)
+
 @st.cache_data
 def make_cosmos_db_vector_search_request(query_embedding):
     ## TODO: this doesn't work?
@@ -31,13 +54,7 @@ def make_cosmos_db_vector_search_request(query_embedding):
     cosmos_database_name = st.secrets["cosmos"]["database_name"]
 
     # Create a CosmosClient
-    client = tiktoken.CosmosClient(cosmos_endpoint, cosmos_key)
-
-    # Create a database and a container
-    client.create_database(cosmos_database_name)
-
-    # Create a container
-    client.create_container(cosmos_database_name, "embeddings")
+    client = CosmosClient(url=cosmos_endpoint, credential=cosmos_key)
 
     # Create and return a new vector search request
     return client.vector_search(cosmos_database_name, "embeddings", query_embedding)
