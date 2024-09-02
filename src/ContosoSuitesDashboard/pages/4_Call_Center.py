@@ -1,14 +1,14 @@
 import json
 import time
 import re
+import uuid
 import streamlit as st
 from scipy.io import wavfile
 import azure.cognitiveservices.speech as speechsdk
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.textanalytics import ExtractiveSummaryAction, AbstractiveSummaryAction
-from azure.core.exceptions import AzureError
-from azure.cosmos import CosmosClient, PartitionKey
+from azure.cosmos import CosmosClient
 import openai
 
 
@@ -161,46 +161,29 @@ def normalize_text(s):
 
 def generate_embeddings_for_call_contents(call_contents):
     """Generate embeddings for call contents. Key assumptions:
-    - Call contents is a list of strings.
+    - Call contents is a single string.
     - Azure OpenAI endpoint, key, and deployment name stored in Streamlit secrets."""
 
-    ## TODO: does this work?
-    embeddings = []
+    # Normalize the text for tokenization
+    # Call make_azure_openai_embedding_request() with the normalized content
+    # Return the embeddings
 
-    for content in call_contents:
-        # Normalize the text for tokenization
-        normalized_content = normalize_text(content)
+    return [0, 0, 0]
 
-        # Call make_azure_openai_embedding_request() with the normalized content
-        response = make_azure_openai_embedding_request(normalized_content)
-
-        # Append the response to the embeddings list
-        embeddings.append(response)
-
-    return embeddings
-
-def save_embeddings_to_cosmos_db(embeddings):
-    ## TODO: does this work?
+def save_transcript_to_cosmos_db(transcript_item):
     """Save embeddings to Cosmos DB vector store. Key assumptions:
-    - Embeddings is a list of embeddings.
+    - transcript_item is a JSON object containing call_id (int), 
+        call_transcript (string), and request_vector (list).
     - Cosmos DB endpoint, key, and database name stored in Streamlit secrets."""
 
     cosmos_endpoint = st.secrets["cosmos"]["endpoint"]
     cosmos_key = st.secrets["cosmos"]["key"]
     cosmos_database_name = st.secrets["cosmos"]["database_name"]
+    cosmos_container_name = "CallTranscripts"
 
     # Create a CosmosClient
-    client = tiktoken.CosmosClient(cosmos_endpoint, cosmos_key)
-
-    # Create a database and a container
-    client.create_database(cosmos_database_name)
-
-    # Create a container
-    client.create_container(cosmos_database_name, "embeddings")
-
-    # Insert the embeddings into the container
-    for embedding in embeddings:
-        client.insert_document(cosmos_database_name, "embeddings", embedding)
+    # Load the Cosmos database and container
+    # Insert the call transcript
 
 ####################### HELPER FUNCTIONS FOR MAIN() #######################
 def perform_audio_transcription(uploaded_file):
@@ -319,7 +302,20 @@ def perform_save_embeddings_to_cosmos_db():
     if 'file_transcription_results' in st.session_state:
         # Use st.spinner() to wrap the embeddings saving process.
         with st.spinner("Saving embeddings to Cosmos DB..."):
-            st.success("This is a placeholder result. Fill in with actual code.")
+            ftr = ' '.join(st.session_state.file_transcription_results)
+            # Generate a call ID based on the text.
+            # This is for demonstration purposes--a real system should use a unique ID.
+            call_id = abs(hash(ftr)) % (10 ** 8)
+            embeddings = generate_embeddings_for_call_contents(ftr)
+            transcript_item = {
+                "id": f'{call_id}_{uuid.uuid4()}',
+                "call_id": call_id,
+                "call_transcript": ftr,
+                "request_vector": embeddings
+            }
+            save_transcript_to_cosmos_db(transcript_item)
+            st.session_state.embedding_status = "Transcript and embeddings saved for this audio."
+            st.success("Embeddings saved to Cosmos DB!")
     else:
         st.error("Please upload an audio file before attempting to save embeddings.")
 
