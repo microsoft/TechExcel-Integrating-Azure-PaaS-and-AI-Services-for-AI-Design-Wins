@@ -344,3 +344,6 @@ ASALocalRun/
 .vscode/settings.json
 
 **/config_full.json
+
+# Python solution files
+src/ConsotoSuitesDashboard/pages/*_solution.py
