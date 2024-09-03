@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0
     
@@ -37,7 +37,7 @@ jobs:
     needs: build
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Docker Login
       # You may pin to the exact commit or the version.
@@ -68,7 +68,7 @@ jobs:
       url: https://{your_prefix}-api.azurewebsites.net/
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v2.1.1

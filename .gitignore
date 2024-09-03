@@ -8,7 +8,7 @@ openai/
 
 secrets.toml
 1_Chat_with_Data_solution.py
-3_Api_Integration_solution.py
+2_Api_Integration_solution.py
 4_Call_Center_solution.py
 5_Call_Center_Search_solution.py
 
