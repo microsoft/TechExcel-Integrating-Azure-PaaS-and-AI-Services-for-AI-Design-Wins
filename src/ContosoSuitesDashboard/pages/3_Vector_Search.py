@@ -9,16 +9,15 @@ def handle_query_vectorization(query):
     response = requests.get(f"{api_endpoint}/Vectorize", params={"text": query}, timeout=10, verify=False)
     return response.text
 
-def handle_vector_search(query, count):
-    """Vectorize the query using the Vectorize endpoint."""
-    query_vector = handle_query_vectorization(query)
+def handle_vector_search(query_vector, count):
+    """Perform a vector search using the VectorSearch endpoint."""
     api_endpoint = st.secrets["api"]["endpoint"]
     headers = {"Content-Type": "application/json"}
     response = requests.post(f"{api_endpoint}/VectorSearch", data=query_vector, params={"count": count}, headers=headers, timeout=10, verify=False)
-    return response;
+    return response
 
 def main():
-    """Main function for the Vector Search over Maintenance Requests Streamlit app."""
+    """Main function for the Vector Search over Maintenance Requests Streamlit page."""
 
     st.write(
         """
@@ -43,9 +42,16 @@ def main():
     if st.button("Submit"):
         with st.spinner("Performing vector search..."):
             if query:
-                response = handle_vector_search(query, results_count)
+                # Vectorize the query text.
+                # Exercise 3 Task 3 TODO #4: Get the vectorized query text by calling handle_query_vectorization.
+
+                # Perform the vector search.
+                # Exercise 3 Task 3 TODO #5: Get the vector search results by calling handle_vector_search.
+
+                # Display the results.
                 st.write("## Results")
-                st.table(response.json())
+                # Exercise 3 Task 3 TODO #6: Display the results as a table.
+
             else:
                 st.warning("Please enter a query.")
 

@@ -106,8 +106,8 @@ app.MapGet("/Vectorize", async (string text, [FromServices] IVectorizationServic
 
 app.MapPost("/VectorSearch", async ([FromBody] float[] queryVector, [FromServices] IVectorizationService vectorizationService, int count = 0) =>
 {
-    var results = await vectorizationService.ExecuteVectorSearch(queryVector, count);
-    return results;
+    // Exercise 3 Task 3 TODO #3: Insert code to call the ExecuteVectorSearch function on the Vectorization Service. Don't forget to remove the NotImplementedException.
+    throw new NotImplementedException();
 })
     .WithName("VectorSearch")
     .WithOpenApi();
