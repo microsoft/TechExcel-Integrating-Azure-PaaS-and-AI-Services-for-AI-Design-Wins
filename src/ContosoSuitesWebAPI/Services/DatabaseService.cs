@@ -6,20 +6,18 @@ namespace ContosoSuitesWebAPI.Services;
 
 public class DatabaseService : IDatabaseService
 {
-    private readonly SqlConnection _conn;
-
     public DatabaseService()
     {
-        _conn = new SqlConnection(
-            connectionString: Environment.GetEnvironmentVariable("AZURE_SQL_DB_CONNECTION_STRING")!
-        );
     }
 
     public async Task<IEnumerable<Hotel>> GetHotels()
     {
         var sql = "SELECT HotelID, HotelName, City, Country FROM dbo.Hotel";
-        await _conn.OpenAsync();
-        using var cmd = new SqlCommand(sql, _conn);
+        using var conn = new SqlConnection(
+            connectionString: Environment.GetEnvironmentVariable("SQLCONNSTR_ContosoSuites")!
+        );
+        conn.Open();
+        using var cmd = new SqlCommand(sql, conn);
         using var reader = await cmd.ExecuteReaderAsync();
         var hotels = new List<Hotel>();
         while (await reader.ReadAsync())
@@ -32,7 +30,7 @@ public class DatabaseService : IDatabaseService
                 Country = reader.GetString(3)
             });
         }
-        await _conn.CloseAsync();
+        conn.Close();
 
         return hotels;
     }
@@ -40,8 +38,11 @@ public class DatabaseService : IDatabaseService
     public async Task<IEnumerable<Booking>> GetBookingsForHotel(int hotelId)
     {
         var sql = "SELECT BookingID, CustomerID, HotelID, StayBeginDate, StayEndDate, NumberOfGuests FROM dbo.Booking WHERE HotelID = @HotelID";
-        await _conn.OpenAsync();
-        using var cmd = new SqlCommand(sql, _conn);
+        using var conn = new SqlConnection(
+            connectionString: Environment.GetEnvironmentVariable("SQLCONNSTR_ContosoSuites")!
+        );
+        conn.Open();
+        using var cmd = new SqlCommand(sql, conn);
         cmd.Parameters.AddWithValue("@HotelID", hotelId);
         using var reader = await cmd.ExecuteReaderAsync();
         var bookings = new List<Booking>();
@@ -57,7 +58,7 @@ public class DatabaseService : IDatabaseService
                 NumberOfGuests = reader.GetInt32(5)
             });
         }
-        await _conn.CloseAsync();
+        conn.Close();
 
         return bookings;
     }
@@ -65,8 +66,11 @@ public class DatabaseService : IDatabaseService
     public async Task<IEnumerable<Booking>> GetBookingsByHotelAndMinimumDate(int hotelId, DateTime dt)
     {
         var sql = "SELECT BookingID, CustomerID, HotelID, StayBeginDate, StayEndDate, NumberOfGuests FROM dbo.Booking WHERE HotelID = @HotelID AND StayBeginDate >= @StayBeginDate";
-        await _conn.OpenAsync();
-        using var cmd = new SqlCommand(sql, _conn);
+        using var conn = new SqlConnection(
+            connectionString: Environment.GetEnvironmentVariable("SQLCONNSTR_ContosoSuites")!
+        );
+        conn.Open();
+        using var cmd = new SqlCommand(sql, conn);
         cmd.Parameters.AddWithValue("@HotelID", hotelId);
         cmd.Parameters.AddWithValue("@StayBeginDate", dt);
         using var reader = await cmd.ExecuteReaderAsync();
@@ -83,7 +87,7 @@ public class DatabaseService : IDatabaseService
                 NumberOfGuests = reader.GetInt32(5)
             });
         }
-        await _conn.CloseAsync();
+        conn.Close();
 
         return bookings;
     }
