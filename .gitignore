@@ -346,4 +346,4 @@ ASALocalRun/
 **/config_full.json
 
 # Python solution files
-src/ConsotoSuitesDashboard/pages/*_solution.py
+*_solution.py
