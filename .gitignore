@@ -12,6 +12,7 @@ secrets.toml
 3_Vector_Search_solution.py
 4_Call_Center_solution.py
 5_Call_Center_Search_solution.py
+6_Copilot_Chat_solution.py
 
 # User-specific files
 *.rsuser

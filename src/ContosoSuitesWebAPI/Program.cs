@@ -1,6 +1,8 @@
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
+using ContosoSuitesWebAPI.Agents;
 using ContosoSuitesWebAPI.Entities;
+using ContosoSuitesWebAPI.Plugins;
 using ContosoSuitesWebAPI.Services;
 using Microsoft.Data.SqlClient;
 using Azure.AI.OpenAI;
@@ -16,11 +18,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 builder.Services.AddSingleton<IVectorizationService, VectorizationService>();
+builder.Services.AddSingleton<MaintenanceCopilot, MaintenanceCopilot>();
 
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
     CosmosClient client = new(
-        connectionString: builder.Configuration["CosmosDBConnectionString"]!
+        connectionString: builder.Configuration["CosmosDB:ConnectionString"]!
     );
     return client;
 });
@@ -89,6 +92,14 @@ app.MapPost("/VectorSearch", async ([FromBody] float[] queryVector, [FromService
     throw new NotImplementedException();
 })
     .WithName("VectorSearch")
+    .WithOpenApi();
+
+app.MapPost("/MaintenanceCopilotChat", async ([FromBody]string message, [FromServices] MaintenanceCopilot copilot) =>
+{
+    // Exercise 5 Task 2 TODO #8: Insert code to call the Chat function on the MaintenanceCopilot. Don't forget to remove the NotImplementedException.
+    throw new NotImplementedException();
+})
+    .WithName("Copilot")
     .WithOpenApi();
 
 app.Run();
