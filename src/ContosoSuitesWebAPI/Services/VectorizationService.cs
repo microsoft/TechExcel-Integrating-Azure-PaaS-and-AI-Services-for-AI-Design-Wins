@@ -8,11 +8,11 @@ namespace ContosoSuitesWebAPI.Services
     {
         private readonly AzureOpenAIClient _client = openAIClient;
         private readonly CosmosClient _cosmosCient = cosmosCient;
-        private readonly string _deploymentName = configuration.GetValue<string>("DEPLOYMENT_NAME") ?? "text-embedding-ada-002";
+        private readonly string _embeddingDeploymentName = configuration.GetValue<string>("EMBEDDING_DEPLOYMENT_NAME") ?? "text-embedding-ada-002";
 
         public async Task<ReadOnlyMemory<float>> GetEmbeddings(string text)
         {
-            var embeddingClient = _client.GetEmbeddingClient(_deploymentName);
+            var embeddingClient = _client.GetEmbeddingClient(_embeddingDeploymentName);
 
             try
             {
