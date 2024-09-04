@@ -18,17 +18,17 @@ namespace ContosoSuites.Functions
 
         public CosmosChangeFeedVectorization(ILoggerFactory loggerFactory)
         {
-            var endpointUrl = Environment.GetEnvironmentVariable("AzureOpenAIEndpont");
+            var endpointUrl = Environment.GetEnvironmentVariable("AzureOpenAIEndpoint");
             if (string.IsNullOrEmpty(endpointUrl))
-                throw new ArgumentNullException("AzureOpenAIEndpont", "AzureOpenAIEndpont is required to run this function.");
+                throw new ArgumentNullException("AzureOpenAIEndpoint", "AzureOpenAIEndpoint is required to run this function.");
 
             var azureOpenAIKey = Environment.GetEnvironmentVariable("AzureOpenAIKey");
             if (string.IsNullOrEmpty(azureOpenAIKey))
                 throw new ArgumentNullException("AzureOpenAIKey", "AzureOpenAIKey is required to run this function.");
 
-            var deploymentName = Environment.GetEnvironmentVariable("DeploymentName");
+            var deploymentName = Environment.GetEnvironmentVariable("EmbeddingDeploymentName");
             if (string.IsNullOrEmpty(deploymentName))
-                throw new ArgumentNullException("DeploymentName", "DeploymentName is required to run this function.");
+                throw new ArgumentNullException("EmbeddingDeploymentName", "EmbeddingDeploymentName is required to run this function.");
 
             _logger = loggerFactory.CreateLogger<CosmosChangeFeedVectorization>();
             var oaiEndpoint = new Uri(endpointUrl);

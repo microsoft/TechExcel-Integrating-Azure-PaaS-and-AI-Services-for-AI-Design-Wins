@@ -20,15 +20,15 @@ builder.Services.AddSingleton<IVectorizationService, VectorizationService>();
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
     CosmosClient client = new(
-        connectionString: builder.Configuration["AZURE_COSMOS_DB_CONNECTION_STRING"]!
+        connectionString: builder.Configuration["CosmosDBConnectionString"]!
     );
     return client;
 });
 
 builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 {
-    var endpoint = new Uri(builder.Configuration["AZURE_OPENAI_ENDPOINT"]!);
-    var credentials = new AzureKeyCredential(builder.Configuration["AZURE_OPENAI_API_KEY"]!);
+    var endpoint = new Uri(builder.Configuration["AzureOpenAI:Endpoint"]!);
+    var credentials = new AzureKeyCredential(builder.Configuration["AzureOpenAI:ApiKey"]!);
 
     var client = new AzureOpenAIClient(endpoint, credentials);
     return client;
