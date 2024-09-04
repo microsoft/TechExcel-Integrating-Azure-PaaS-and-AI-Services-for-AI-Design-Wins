@@ -45,26 +45,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/Customer", async (string searchCriterion, string searchValue) => 
-{
-    
-    // TODO: implement search.
-    // TODO: Replace with a call to Cosmos DB.
-    var customer = new Customer
-    {
-        FirstName = "John",
-        LastName = "Doe",
-        FullName = "John Doe",
-        LoyaltyTier = LoyaltyTier.Gold,
-        YearsAsMember = 2,
-        DateOfMostRecentStay = DateTime.Now.AddDays(-1),
-        AverageRating = 4.5
-    };
-    return customer;
-})
-    .WithName("GetCustomer")
-    .WithOpenApi();
-
 app.MapGet("/Hotels", async () => 
 {
     throw new NotImplementedException();
