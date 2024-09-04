@@ -17,8 +17,9 @@ namespace ContosoSuitesWebAPI.Services
             try
             {
                 // Generate a vector for the provided text.
-                var embedding = await embeddingClient.GenerateEmbeddingAsync(text);
-                var vector = embedding.Value.Vector.ToArray();
+                var embeddings = await embeddingClient.GenerateEmbeddingAsync(text);
+
+                var vector = embeddings.Value.Vector.ToArray();
 
                 // Return the vector embeddings.
                 return vector;
