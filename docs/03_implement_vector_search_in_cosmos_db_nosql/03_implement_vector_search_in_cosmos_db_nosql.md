@@ -1,5 +1,5 @@
 ---
-title: 'Exercise 03: Implement contextual grounding using vector search in Azure Cosmos DB NoSQL'
+title: 'Exercise 03: Implement contextual grounding'
 layout: default
 nav_order: 4
 has_children: true
