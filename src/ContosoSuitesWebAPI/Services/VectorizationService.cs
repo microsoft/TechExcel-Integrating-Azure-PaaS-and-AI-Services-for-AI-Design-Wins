@@ -10,7 +10,7 @@ namespace ContosoSuitesWebAPI.Services
         private readonly CosmosClient _cosmosCient = cosmosCient;
         private readonly string _embeddingDeploymentName = configuration.GetValue<string>("EMBEDDING_DEPLOYMENT_NAME") ?? "text-embedding-ada-002";
 
-        public async Task<ReadOnlyMemory<float>> GetEmbeddings(string text)
+        public async Task<float[]> GetEmbeddings(string text)
         {
             var embeddingClient = _client.GetEmbeddingClient(_embeddingDeploymentName);
 
@@ -18,7 +18,7 @@ namespace ContosoSuitesWebAPI.Services
             {
                 // Generate a vector for the provided text.
                 var embedding = await embeddingClient.GenerateEmbeddingAsync(text);
-                var vector = embedding.Value.Vector;
+                var vector = embedding.Value.Vector.ToArray();
 
                 // Return the vector embeddings.
                 return vector;
