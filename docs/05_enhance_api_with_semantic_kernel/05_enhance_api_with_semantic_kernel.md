@@ -19,8 +19,8 @@ After you complete this lab, you will be able to:
 
 * Implement Semantic Kernel orchestration in a .NET API
 * Create an agent using Semantic Kernel
-* Create a Semantic Kernel plugin and assign skills to an agent
-* Utilize prompt filtering
+* Assign skills to an agent
+* Use built-in AI services from Semantic Kernel in your applications
 
 ## Lab Duration
 
