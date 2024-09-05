@@ -38,15 +38,15 @@ def main():
         with st.spinner("Awaiting the Copilot's response to your question..."):
             # Exercise 5 Task 2 TODO #10: Set up a conversational chat interface with the Copilot using the steps below.
             pass # Remove this once you have defined the conversational chat interface
-            
+
             # Display user message in chat message container
-            
+
             # Add user message to chat history
-            
+
             # Send user message to Copilot and get response
-            
+
             # Display assistant response in chat message container
-            
+
             # Add assistant response to chat history
 
 if __name__ == "__main__":
