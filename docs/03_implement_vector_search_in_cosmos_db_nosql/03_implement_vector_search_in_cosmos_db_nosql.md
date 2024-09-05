@@ -19,7 +19,7 @@ After you complete this lab, you will be able to:
 - Define container vector policies
 - Specify vector indexing policies
 - Generate vector embeddings using Azure OpenAI and store them into Cosmos DB
-- Peform similarity searches using the `VectorDistance()` function in Cosmos DB
+- Perform similarity searches using the `VectorDistance()` function in Cosmos DB
 
 ## Lab Duration
 

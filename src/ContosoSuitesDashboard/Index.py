@@ -17,6 +17,7 @@ def main():
     3. Vector Search. Used in Exercise 03.
     4. Call Center. Used in Exercise 04.
     5. Call Center Search. Used in Exercise 04.
+    6. Copilot Chat. Used in Exercise 05.
     """
     )
 
