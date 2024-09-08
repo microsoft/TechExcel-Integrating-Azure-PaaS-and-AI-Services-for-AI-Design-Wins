@@ -8,7 +8,7 @@ namespace ContosoSuitesWebAPI.Services
     {
         private readonly AzureOpenAIClient _client = openAIClient;
         private readonly CosmosClient _cosmosClient = cosmosClient;
-        private readonly string _embeddingDeploymentName = configuration.GetValue<string>("EMBEDDING_DEPLOYMENT_NAME") ?? "text-embedding-ada-002";
+        private readonly string _embeddingDeploymentName = configuration.GetValue<string>("AzureOpenAI:EmbeddingDeploymentName") ?? "text-embedding-ada-002";
 
         public async Task<float[]> GetEmbeddings(string text)
         {
@@ -33,8 +33,8 @@ namespace ContosoSuitesWebAPI.Services
         // Exercise 3 Task 3 TODO #2: Uncomment the following code block to execute a vector search query against Cosmos DB.
         //public async Task<List<VectorSearchResult>> ExecuteVectorSearch(float[] queryVector, int max_results = 0, double minimum_similarity_score = 0.8)
         //{
-        //    var db = _cosmosClient.GetDatabase(configuration.GetValue<string>("COSMOS_DATABASE_NAME") ?? "ContosoSuites");
-        //    var container = db.GetContainer(configuration.GetValue<string>("MAINTENANCE_REQUESTS_CONTAINER_NAME") ?? "MaintenanceRequests");
+        //    var db = _cosmosClient.GetDatabase(configuration.GetValue<string>("CosmosDB:DatabaseName") ?? "ContosoSuites");
+        //    var container = db.GetContainer(configuration.GetValue<string>("CosmosDB:MaintenanceRequestsContainerName") ?? "MaintenanceRequests");
 
         //    var query = $"SELECT c.hotel_id AS HotelId, c.hotel AS Hotel, c.details AS Details, c.source AS Source, VectorDistance(c.request_vector, [{string.Join(",", queryVector)}]) AS SimilarityScore FROM c";
         //    query += $" WHERE VectorDistance(c.request_vector, [{string.Join(",", queryVector)}]) > {minimum_similarity_score}";
