@@ -14,7 +14,8 @@
 				"ms-azuretools.vscode-bicep",
 				"ms-dotnettools.csharp",
 				"ms-azuretools.vscode-azureresourcegroups",
-				"ms-dotnettools.csdevkit"
+				"ms-dotnettools.csdevkit",
+				"ms-python.python"
 			]
 		}
 	}
