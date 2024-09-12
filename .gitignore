@@ -5,6 +5,7 @@
 
 # Virtual environments
 openai/
+aiwins/
 
 secrets.toml
 1_Chat_with_Data_solution.py

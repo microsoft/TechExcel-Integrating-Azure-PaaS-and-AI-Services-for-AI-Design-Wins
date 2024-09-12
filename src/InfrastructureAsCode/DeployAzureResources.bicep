@@ -176,7 +176,7 @@ resource languagteService 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   location: location
   kind: 'TextAnalytics'
   sku: {
-    name: 'F0'
+    name: 'S'
   }
   properties: {
     customSubDomainName: languageServiceName
