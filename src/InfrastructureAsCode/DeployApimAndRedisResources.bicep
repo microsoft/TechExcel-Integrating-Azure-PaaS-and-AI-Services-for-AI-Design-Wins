@@ -13,6 +13,9 @@ var redisCacheName = '${uniqueString(resourceGroup().id)}-redis'
 var redisCacheSku = 'Enterprise_E1'
 var redisCacheCapacity = 2
 
+@description('Restore the service instead of creating a new instance. This is useful if you previously soft-deleted the service and want to restore it. If you are restoring a service, set this to true. Otherwise, leave this as false.')
+param restore bool = false
+
 resource apiManagementService 'Microsoft.ApiManagement/service@2023-09-01-preview' = {
   name: apiManagementServiceName
   location: location
@@ -26,6 +29,7 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2023-09-01-previe
   properties: {
     publisherEmail: apimPublisherEmail
     publisherName: apimPublisherName
+    restore: restore
   }
 }
 
@@ -39,18 +43,19 @@ resource redisCache 'Microsoft.Cache/redisEnterprise@2024-03-01-preview' = {
   identity: {
     type: 'SystemAssigned'
   }
-  properties: {}
 }
 
 resource redisCacheDatabase 'Microsoft.Cache/redisEnterprise/databases@2024-03-01-preview' = {
-  parent: redisCache
   name: 'default'
+  parent: redisCache
   properties: {
-    clientProtocol: 'Encrypted'
     evictionPolicy: 'NoEviction'
     clusteringPolicy: 'EnterpriseCluster'
     deferUpgrade: 'NotDeferred'
     modules: [
+      {
+        name: 'RedisJSON'
+      }
       {
         name: 'RediSearch'
       }
