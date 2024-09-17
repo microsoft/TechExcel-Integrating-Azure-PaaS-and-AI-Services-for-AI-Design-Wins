@@ -20,6 +20,7 @@ Upon completion of this lab, you will have gained the following skills:
 - Import an Azure OpenAI Service resource as an API in Azure API Management
 - Use APIM policies to manage token consumption and monitor token usage
 - Enable semantic caching using Azure Cache for Redis Enterprise and APIM
+- Integrate APIM-managed APIs into GenAI applications
 
 ## Lab Duration
 
