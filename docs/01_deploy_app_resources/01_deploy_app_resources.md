@@ -17,7 +17,7 @@ In this first exercise, we will set the stage for Contoso Suites by deploying ou
 
 After you complete this lab, you will be able to:
 
-* Use Bicep scripts to provision Azure resources
+* Use a Bicep script to provision Azure resources
 * Load data into Azure AI Search and query it from code
 * Deploy applications to Azure App Services
 

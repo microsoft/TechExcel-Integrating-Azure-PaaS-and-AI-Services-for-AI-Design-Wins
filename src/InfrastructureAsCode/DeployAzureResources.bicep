@@ -21,6 +21,15 @@ param deployments array = [
 @description('Restore the service instead of creating a new instance. This is useful if you previously soft-deleted the service and want to restore it. If you are restoring a service, set this to true. Otherwise, leave this as false.')
 param restore bool = false
 
+@description('The email address of the owner of the service')
+@minLength(1)
+param apimPublisherEmail string = 'support@contososuites.com'
+
+var apiManagementServiceName = '${uniqueString(resourceGroup().id)}-apim'
+var apimSku = 'Basicv2'
+var apimSkuCount = 1
+var apimPublisherName = 'Contoso Suites'
+
 var cosmosDbName = '${uniqueString(resourceGroup().id)}-cosmosdb'
 var cosmosDbDatabaseName = 'ContosoSuites'
 var storageAccountName = '${uniqueString(resourceGroup().id)}sa'
@@ -364,6 +373,23 @@ resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
   }
 }
 
+resource apiManagementService 'Microsoft.ApiManagement/service@2023-09-01-preview' = {
+  name: apiManagementServiceName
+  location: location
+  sku: {
+    name: apimSku
+    capacity: apimSkuCount
+  }
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    publisherEmail: apimPublisherEmail
+    publisherName: apimPublisherName
+    restore: restore
+  }
+}
+
 output cosmosDbEndpoint string = cosmosDbAccount.properties.documentEndpoint
 output storageAccountName string = storageAccount.name
 output searchServiceName string = searchService.name
@@ -375,3 +401,4 @@ output container_registry_name string = containerRegistry.name
 output application_name_dash string = appServiceAppDash.name
 output application_url_dash string = appServiceAppDash.properties.hostNames[0]
 output function_app_name string = functionApp.name
+output apiManagementServiceName string = apiManagementService.name
