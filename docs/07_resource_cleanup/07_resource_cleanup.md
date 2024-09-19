@@ -13,7 +13,7 @@ In this exercise, you will delete the Azure and GitHub codespaces resources you 
 
 ## Objectives
 
-Upon completion of this exercise, you will deleted all resources you created to complete this workshop.
+Upon completing this exercise, you will delete all resources you created to complete this workshop.
 
 ## Lab Duration
 
