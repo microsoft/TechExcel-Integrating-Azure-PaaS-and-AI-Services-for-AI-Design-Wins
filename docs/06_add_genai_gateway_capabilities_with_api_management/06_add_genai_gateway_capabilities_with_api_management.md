@@ -20,6 +20,7 @@ Upon completion of this lab, you will have gained the following skills:
 - Import an Azure OpenAI Service resource as an API in Azure API Management
 - Use APIM policies to manage token consumption and monitor token usage
 - Integrate APIM-managed APIs into GenAI applications
+- Load balance LLM workloads across two Azure OpenAI service instances (Optional)
 
 ## Lab Duration
 
