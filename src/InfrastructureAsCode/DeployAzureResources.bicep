@@ -2,7 +2,7 @@
 param location string = resourceGroup().location
 
 @description('Password for the SQL Server admin user. PLEASE CHANGE THIS BEFORE DEPLOYMENT!')
-param sqlAdminPassword string = 'g@G9@2nD7C1BP%uh'
+param sqlAdminPassword string = 'Sqllogin@7'
 
 @description('Model deployments for OpenAI')
 param deployments array = [
@@ -25,7 +25,7 @@ param restore bool = false
 @minLength(1)
 param apimPublisherEmail string = 'support@contososuites.com'
 
-var apiManagementServiceName = 'apim-${uniqueString(resourceGroup().id)}'
+var apiManagementServiceName = '${uniqueString(resourceGroup().id)}-apim'
 var apimSku = 'Basicv2'
 var apimSkuCount = 1
 var apimPublisherName = 'Contoso Suites'
