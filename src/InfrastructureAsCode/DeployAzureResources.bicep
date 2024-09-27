@@ -70,6 +70,7 @@ resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
     }
     databaseAccountOfferType: 'Standard'
     locations: locations
+    disableLocalAuth: false
   }
 }
 
