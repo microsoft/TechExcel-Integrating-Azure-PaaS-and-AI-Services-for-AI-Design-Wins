@@ -55,7 +55,7 @@ namespace ContosoSuites.Functions
                 {
                     // Combine the hotel and details fields into a single string for embedding.
                     var request_text = $"Hotel: {request.Hotel}\n Request Details: {request.Details}";
-                    // Generate a vector for the maintenance request.
+                    // Generate a vector for the maintenance request
                     var embedding = _embeddingClient.GenerateEmbedding(request_text);
                     var requestVector = embedding.Value.Vector;
 

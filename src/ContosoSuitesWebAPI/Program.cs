@@ -96,6 +96,7 @@ app.MapGet("/Hotels/{hotelId}/Bookings/{min_date}", async (int hotelId, DateTime
     .WithName("GetRecentBookingsForHotel")
     .WithOpenApi();
 
+/*
 app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
 {
     var message = await Task.FromResult(request.Form["message"]);
@@ -104,7 +105,7 @@ app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
 })
     .WithName("Chat")
     .WithOpenApi();
-
+*/
 app.MapGet("/Vectorize", async (string text, [FromServices] IVectorizationService vectorizationService) =>
 {
     var embeddings = await vectorizationService.GetEmbeddings(text);
