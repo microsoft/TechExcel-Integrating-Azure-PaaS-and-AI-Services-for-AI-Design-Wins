@@ -1,7 +1,7 @@
 name: Dashboard Deployment
 
 env:
-  registryName: {your_registry_name}.azurecr.io
+  registryName: rx3pmb4kxuumqcosureg.azurecr.io
   repositoryName: techexcel/csdash
   dockerFolderPath: ./src/ContosoSuitesDashboard
   tag: ${{github.run_number}}
@@ -54,7 +54,7 @@ jobs:
     needs: dockerBuildPush
     environment:
       name: prod
-      url: https://{your_prefix}-dash.azurewebsites.net/
+      url: https://rx3pmb4kxuumq-dash.azurewebsites.net/
     
     steps:
     - uses: actions/checkout@v4
@@ -66,5 +66,5 @@ jobs:
 
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: '{your_prefix}-dash'
-        images: {your_registry_name}.azurecr.io/techexcel/csdash:${{github.run_number}}
+        app-name: 'rx3pmb4kxuumq-dash'
+        images: rx3pmb4kxuumqcosureg.azurecr.io/techexcel/csdash:${{github.run_number}}
