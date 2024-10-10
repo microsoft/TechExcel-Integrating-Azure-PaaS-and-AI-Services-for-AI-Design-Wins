@@ -1,5 +1,4 @@
 name: Dashboard Deployment
-
 env:
   registryName: v4amxhg5z5samcosureg.azurecr.io
   repositoryName: techexcel/csdash
