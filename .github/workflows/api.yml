@@ -65,7 +65,7 @@ jobs:
     needs: dockerBuildPush
     environment:
       name: prod
-      url: https://{your_prefix}-api.azurewebsites.net/
+      url: https://v4amxhg5z5sam-api.azurewebsites.net/
     
     steps:
     - uses: actions/checkout@v4
@@ -78,4 +78,4 @@ jobs:
     - uses: azure/webapps-deploy@v2
       with:
         app-name: '{your_prefix}-api'
-        images: {your_registry_name}.azurecr.io/techexcel/csapi:${{github.run_number}}
+        images: v4amxhg5z5samcosureg.azurecr.io/techexcel/csapi:${{github.run_number}}
