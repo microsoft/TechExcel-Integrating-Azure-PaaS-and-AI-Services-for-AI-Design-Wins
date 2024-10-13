@@ -4,12 +4,18 @@
 namespace ContosoSuitesWebAPI.Agents
 {
     // Exercise 5 Task 2 TODO #2: Inject the Kernel service into the MaintenanceCopilot class.
+    /// <summary>
+    /// The maintenance copilot agent for assisting with maintenance requests.
+    /// </summary>
     public class MaintenanceCopilot
     {
         // Exercise 5 Task 2 TODO #3: Uncomment the two lines below to declare the Kernel and ChatHistory objects.
         //public readonly Kernel _kernel = kernel;
         //private ChatHistory _history = new();
 
+        /// <summary>
+        /// Chat with the maintenance copilot.
+        /// </summary>
         public async Task<string> Chat(string userPrompt)
         {
             // Exercise 5 Task 2 TODO #4: Comment out or delete the throw exception line below,

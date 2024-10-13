@@ -1,11 +1,34 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": "Attach to .NET Functions",
-        "type": "coreclr",
-        "request": "attach",
-        "processId": "${command:azureFunctions.pickProcess}"
-      }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to .NET Functions",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:azureFunctions.pickProcess}"
+    },
+    {
+      "name": "Launch ContosoSuitesWebAPI",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build WebAPI", 
+      "program": "${workspaceFolder}/src/ContosoSuitesWebAPI/bin/Debug/net8.0/ContosoSuitesWebAPI.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/ContosoSuitesWebAPI",       
+      "console": "internalConsole",
+      "stopAtEntry": false     
+  },
+  {
+      "name": "Launch streamlit",
+      "type": "debugpy",
+      "request": "launch",
+      //"program": "streamlit",
+      "module": "streamlit",
+      "cwd": "${workspaceFolder}/src/ContosoSuitesDashboard",
+      "args" : [
+          "run",
+          "Index.py"
+      ]
   }
+  ]
+}

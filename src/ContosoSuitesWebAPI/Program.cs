@@ -16,10 +16,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Use dependency injection to inject services into the application.
 builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 builder.Services.AddSingleton<IVectorizationService, VectorizationService>();
 builder.Services.AddSingleton<MaintenanceCopilot, MaintenanceCopilot>();
 
+// Create a single instance of the CosmosClient to be shared across the application.
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
     CosmosClient client = new(
@@ -28,6 +30,7 @@ builder.Services.AddSingleton<CosmosClient>((_) =>
     return client;
 });
 
+// Create a single instance of the AzureOpenAIClient to be shared across the application.
 builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 {
     var endpoint = new Uri(builder.Configuration["AzureOpenAI:Endpoint"]!);
@@ -48,6 +51,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+/**** Endpoints ****/
+// This endpoint serves as the default landing page for the API.
 app.MapGet("/", async () => 
 {
     return "Welcome to the Contoso Suites Web API!";
@@ -55,6 +60,7 @@ app.MapGet("/", async () =>
     .WithName("Index")
     .WithOpenApi();
 
+// Retrieve the set of hotels from the database.
 app.MapGet("/Hotels", async () => 
 {
     throw new NotImplementedException();
@@ -62,6 +68,7 @@ app.MapGet("/Hotels", async () =>
     .WithName("GetHotels")
     .WithOpenApi();
 
+// Retrieve the bookings for a specific hotel.
 app.MapGet("/Hotels/{hotelId}/Bookings/", async (int hotelId) => 
 {
     throw new NotImplementedException();
@@ -69,6 +76,7 @@ app.MapGet("/Hotels/{hotelId}/Bookings/", async (int hotelId) =>
     .WithName("GetBookingsForHotel")
     .WithOpenApi();
 
+// Retrieve the bookings for a specific hotel that are after a specified date.
 app.MapGet("/Hotels/{hotelId}/Bookings/{min_date}", async (int hotelId, DateTime min_date) => 
 {
     throw new NotImplementedException();
@@ -76,6 +84,7 @@ app.MapGet("/Hotels/{hotelId}/Bookings/{min_date}", async (int hotelId, DateTime
     .WithName("GetRecentBookingsForHotel")
     .WithOpenApi();
 
+// This endpoint is used to send a message to the Azure OpenAI endpoint.
 app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
 {
     var message = await Task.FromResult(request.Form["message"]);
@@ -85,6 +94,8 @@ app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
     .WithName("Chat")
     .WithOpenApi();
 
+// This endpoint is used to vectorize a text string.
+// We will use this to generate embeddings for the maintenance request text.
 app.MapGet("/Vectorize", async (string text, [FromServices] IVectorizationService vectorizationService) =>
 {
     var embeddings = await vectorizationService.GetEmbeddings(text);
@@ -93,6 +104,7 @@ app.MapGet("/Vectorize", async (string text, [FromServices] IVectorizationServic
     .WithName("Vectorize")
     .WithOpenApi();
 
+// This endpoint is used to search for maintenance requests based on a vectorized query.
 app.MapPost("/VectorSearch", async ([FromBody] float[] queryVector, [FromServices] IVectorizationService vectorizationService, int max_results = 0, double minimum_similarity_score = 0.8) =>
 {
     // Exercise 3 Task 3 TODO #3: Insert code to call the ExecuteVectorSearch function on the Vectorization Service. Don't forget to remove the NotImplementedException.
@@ -101,6 +113,7 @@ app.MapPost("/VectorSearch", async ([FromBody] float[] queryVector, [FromService
     .WithName("VectorSearch")
     .WithOpenApi();
 
+// This endpoint is used to send a message to the Maintenance Copilot.
 app.MapPost("/MaintenanceCopilotChat", async ([FromBody]string message, [FromServices] MaintenanceCopilot copilot) =>
 {
     // Exercise 5 Task 2 TODO #10: Insert code to call the Chat function on the MaintenanceCopilot. Don't forget to remove the NotImplementedException.

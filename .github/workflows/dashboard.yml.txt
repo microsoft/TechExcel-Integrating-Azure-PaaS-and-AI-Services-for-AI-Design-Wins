@@ -1,41 +1,20 @@
-name: API Deployment
-
+name: Dashboard Deployment
 env:
-  registryName: {your_registry_name}.azurecr.io
-  repositoryName: techexcel/csapi
-  dockerFolderPath: ./src/ContosoSuitesWebAPI
-  tag: ${{github.run_number}}
-
+  imageName: "${{ secrets.ACR_LOGIN_SERVER }}/techexcel/csdash:${{github.run_number}}"
+  appName: ${{ vars.APP_PREFIX }}-dash
+  appPath: ./src/ContosoSuitesDashboard
 on:
   push:
     branches: [ main ]
-    paths: src/ContosoSuitesWebAPI/**
+    paths: src/ContosoSuitesDashboard/**
   pull_request:
     branches: [ main ]
-    paths: src/ContosoSuitesWebAPI/**
+    paths: src/ContosoSuitesDashboard/**
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0
-    
-    - name: Restore dependencies
-      run: dotnet restore ./src/ContosoSuitesWebAPI/ContosoSuitesWebAPI.csproj
-    - name: Build
-      run: dotnet build --no-restore ./src/ContosoSuitesWebAPI/ContosoSuitesWebAPI.csproj
-      
   dockerBuildPush:
     runs-on: ubuntu-latest
-    needs: build
-
     steps:
     - uses: actions/checkout@v4
     
@@ -52,20 +31,24 @@ jobs:
         password: ${{ secrets.ACR_PASSWORD }}
         # Log out from the Docker registry at the end of a job
         logout: true
-        
+    
+    - name: Create Secrets File
+      run: echo "$STREAMLIT_SECRETS" > $appPath/.streamlit/secrets.toml
+      shell: bash
+      env:
+          STREAMLIT_SECRETS: ${{ secrets.STREAMLIT_SECRETS }}
     - name: Docker Build
-      run: docker build -t $registryName/$repositoryName:$tag --build-arg build_version=$tag $dockerFolderPath
+      run: docker build -t $imageName --build-arg build_version=${{github.run_number}} $appPath
       
     - name: Docker Push
-      run: docker push $registryName/$repositoryName:$tag
-
+      run: docker push $imageName
   deploy-to-prod:
   
     runs-on: ubuntu-latest
     needs: dockerBuildPush
     environment:
       name: prod
-      url: https://{your_prefix}-api.azurewebsites.net/
+      url: ${{ steps.app-deploy.outputs.webapp-url }}
     
     steps:
     - uses: actions/checkout@v4
@@ -74,8 +57,9 @@ jobs:
       uses: azure/login@v2.1.1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - uses: azure/webapps-deploy@v2
+    - name: Deploy to Azure Web App
+      id:   app-deploy
+      uses: azure/webapps-deploy@v2
       with:
-        app-name: '{your_prefix}-api'
-        images: {your_registry_name}.azurecr.io/techexcel/csapi:${{github.run_number}}
+        app-name: ${{ env.appName }}
+        images: ${{ env.imageName }}
