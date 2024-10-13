@@ -32,8 +32,11 @@ def main():
     )
 
     # Await a user message and handle the chat prompt when it comes in.
+    # col1 and col2 represent two separate columns in the Streamlit app.
+    # This allows us to format the application in a two-column layout.
     col1, col2 = st.columns(2)
 
+    # The "with col1" and "with col2" blocks define the content that will be displayed in each column.
     with col1:
         query = st.text_input("Search query:", key="query")
     with col2:

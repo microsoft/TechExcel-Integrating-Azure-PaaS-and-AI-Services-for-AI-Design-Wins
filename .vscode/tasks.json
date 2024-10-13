@@ -76,6 +76,18 @@
 		"command": "host start",
 		"isBackground": true,
 		"problemMatcher": "$func-dotnet-watch"
-	  }
+	  },
+	  {
+		"label": "build WebAPI",
+		"command": "dotnet",
+		"type": "process",
+		"args": [
+			"build",
+			"${workspaceFolder}/src/ContosoSuitesWebAPI/ContosoSuitesWebAPI.csproj",
+			"/property:GenerateFullPaths=true",
+			"/consoleloggerparameters:NoSummary"
+		],
+		"problemMatcher": "$msCompile"
+	}
 	]
   }

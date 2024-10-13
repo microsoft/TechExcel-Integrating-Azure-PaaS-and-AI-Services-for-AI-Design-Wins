@@ -5,6 +5,9 @@ using Microsoft.Azure.Cosmos;
 
 namespace ContosoSuitesWebAPI.Plugins
 {
+    /// <summary>
+    /// The maintenance request plugin for creating and saving maintenance requests.
+    /// </summary>
     public class MaintenanceRequestPlugin(CosmosClient cosmosClient)
     {
         private readonly CosmosClient _cosmosClient = cosmosClient;
@@ -14,6 +17,9 @@ namespace ContosoSuitesWebAPI.Plugins
         // the accurately describes the purpose of the function, such as "Creates a new maintenance request for a hotel."
 
         // Exercise 5 Task 2 TODO #7: Add Kernel as the first parameter to the function.
+        /// <summary>
+        /// Creates a new maintenance request for a hotel.
+        /// </summary>
         public async Task<MaintenanceRequest> CreateMaintenanceRequest(int HotelId, string Hotel, string Details, int? RoomNumber, string? location)
         {
             try
@@ -43,6 +49,9 @@ namespace ContosoSuitesWebAPI.Plugins
         // the accurately describes the purpose of the function, such as "Saves a maintenance request to the database for a hotel."
 
         // Exercise 5 Task 2 TODO #9: Add Kernel as the first parameter to the function.
+        /// <summary>
+        /// Saves a maintenance request to the database for a hotel.
+        /// </summary>
         public async Task SaveMaintenanceRequest(MaintenanceRequest maintenanceRequest)
         {
             var db = _cosmosClient.GetDatabase("ContosoSuites");

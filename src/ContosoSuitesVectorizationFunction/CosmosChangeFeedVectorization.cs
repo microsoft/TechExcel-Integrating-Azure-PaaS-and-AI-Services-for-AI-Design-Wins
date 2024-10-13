@@ -9,6 +9,9 @@ using System.Text.Json.Serialization;
 
 namespace ContosoSuites.Functions
 {
+    /// <summary>
+    /// A function that listens for changes to maintenance requests in Cosmos DB and generates vector embeddings for new requests.
+    /// </summary>
     public class CosmosChangeFeedVectorization
     {
         private readonly ILogger _logger;
@@ -16,6 +19,11 @@ namespace ContosoSuites.Functions
         const string DatabaseName = "ContosoSuites";
         const string ContainerName = "MaintenanceRequests";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CosmosChangeFeedVectorization"/> class.
+        /// </summary>
+        /// <param name="loggerFactory">The logger factory. This comes from Program.cs as the tie-in to Application Insights.</param>
+        /// <exception cref="ArgumentNullException">Thrown if necessary configuration settings are missing.</exception>
         public CosmosChangeFeedVectorization(ILoggerFactory loggerFactory)
         {
             var endpointUrl = Environment.GetEnvironmentVariable("AzureOpenAIEndpoint");
@@ -37,6 +45,9 @@ namespace ContosoSuites.Functions
             _embeddingClient = openAIClient.GetEmbeddingClient(deploymentName);   
         }
 
+        /// <summary>
+        /// Listens for changes to maintenance requests in Cosmos DB and generates vector embeddings for new requests.
+        /// </summary>
         [Function("VectorizeMaintenanceRequests")]
         [CosmosDBOutput(DatabaseName, ContainerName, Connection = "CosmosDBConnectionString")]
         public object Run([CosmosDBTrigger(
