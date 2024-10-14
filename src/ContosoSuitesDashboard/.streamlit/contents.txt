@@ -1,0 +1,3 @@
+Use the secrets.template.toml file to create a new file called secrets.toml.
+
+This will serve as your way of connecting to external resources from Streamlit locally.
