@@ -67,7 +67,7 @@ app.MapGet("/Hotels", async () =>
     return hotels;
 })
     .WithName("GetHotels")
-    .WithOpenApi();
+    .WithOpenApi(); 
 
 // Retrieve the bookings for a specific hotel.
 app.MapGet("/Hotels/{hotelId}/Bookings/", async (int hotelId) => 
