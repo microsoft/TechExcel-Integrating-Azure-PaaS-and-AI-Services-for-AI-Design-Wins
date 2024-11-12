@@ -16,7 +16,7 @@ public class DatabaseService : IDatabaseService
     {
         var sql = "SELECT HotelID, HotelName, City, Country FROM dbo.Hotel";
         using var conn = new SqlConnection(
-            connectionString: Environment.GetEnvironmentVariable("SQLAZURECONNSTR_ContosoSuites")!
+            connectionString: "Server=tcp:f5f53p4uqr4si-sqlserver.database.windows.net.database.windows.net,1433;Initial Catalog=ContosoSuitesBookings;Persist Security Info=False;User ID=contosoadmin;Password=andro+Meda1q;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;" //Environment.GetEnvironmentVariable("SQLAZURECONNSTR_ContosoSuites")!
         );
         conn.Open();
         using var cmd = new SqlCommand(sql, conn);
