@@ -19,10 +19,6 @@ var config = new ConfigurationBuilder()
     .AddEnvironmentVariables()
     .Build();
 
-
-
-
-
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -59,7 +55,6 @@ builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 {
     var endpoint = new Uri(builder.Configuration["AzureOpenAI:Endpoint"]!);
     var credentials = new AzureKeyCredential(builder.Configuration["AzureOpenAI:ApiKey"]!);
-
     var client = new AzureOpenAIClient(endpoint, credentials);
     return client;
 });
