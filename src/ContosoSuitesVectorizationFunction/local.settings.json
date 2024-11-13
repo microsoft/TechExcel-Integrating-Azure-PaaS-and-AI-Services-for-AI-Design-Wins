@@ -1,7 +1,7 @@
 {
     "IsEncrypted": false,
     "Values": {
-        "AzureWebJobsStorage": "",
+        "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=f5f53p4uqr4sisa;EndpointSuffix=core.windows.net;AccountKey=/J2gCkGinI4bsVk7skQVJCvTPk9SvpdoGvKhrB2CNFN1GOnS/tzt1SMk0QheiyggiqBmxPERXsrP+ASto5b8Ag==",
         "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
         "AzureOpenAIEndpoint": "https://f5f53p4uqr4si-openai.openai.azure.com/",
         "AzureOpenAIKey": "a5f965f3a5754c75bec92e146589e3d6",
