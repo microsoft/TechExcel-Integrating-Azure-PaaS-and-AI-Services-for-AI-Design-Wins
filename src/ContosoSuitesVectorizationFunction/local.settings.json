@@ -1,0 +1,12 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "AzureOpenAIEndpoint": "https://f5f53p4uqr4si-openai.openai.azure.com/",
+        "AzureOpenAIKey": "a5f965f3a5754c75bec92e146589e3d6",
+        "CosmosDBConnectionString": "AccountEndpoint=https://f5f53p4uqr4si-cosmosdb.documents.azure.com:443/;AccountKey=3yy3CctOiS9Jor2d12CRhXad9tMYfkY77MibLwvMvfym1cTMnhsue4jerKkxscyhJZPfiNO5KYUMACDbV6YrrA==;",
+        "EmbeddingDeploymentName": "text-embedding-ada-002"
+    }
+}
+ 
