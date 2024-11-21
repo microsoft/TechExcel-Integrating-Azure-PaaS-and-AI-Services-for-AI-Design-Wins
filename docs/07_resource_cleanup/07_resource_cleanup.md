@@ -7,7 +7,7 @@ has_children: true
 
 # Exercise 07 - Workshop resource cleanup
 
-## Lab Scenario
+## Scenario
 
 In this exercise, you will delete the Azure and GitHub codespaces resources you created for this workshop.
 
@@ -15,6 +15,6 @@ In this exercise, you will delete the Azure and GitHub codespaces resources you 
 
 Upon completing this exercise, you will delete all resources you created to complete this workshop.
 
-## Lab Duration
+## Duration
 
 - **Estimated Time:** 5 minutes

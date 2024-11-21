@@ -7,7 +7,7 @@ has_children: true
 
 # Exercise 01 - Deploy application resources
 
-## Lab Scenario
+## Scenario
 
 This training will have you work through a customer proof of concept regarding Azure OpenAI and Azure AI Services. The scenario entails building a proof of concept for Contoso Suites, a luxury resort hotel chain with hotels in several Caribbean nations and territories. Contoso Suites prides itself on the "personal touch" experience its support department provides. In order to extend this experience, Contoso Suites is interested in seeing how AI services and Large Language Models (LLMs) can make it easier for support personnel to do their job.
 
@@ -21,6 +21,6 @@ After you complete this lab, you will be able to:
 * Load data into Azure AI Search and query it from code
 * Deploy applications to Azure App Services
 
-## Lab Duration
+## Duration
 
 * **Estimated Time:** 60 minutes

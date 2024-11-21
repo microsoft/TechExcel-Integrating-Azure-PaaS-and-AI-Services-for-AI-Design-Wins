@@ -7,7 +7,7 @@ has_children: true
 
 # Exercise 06 - Add GenAI Gateway Capabilities with Azure API Management
 
-## Lab Scenario
+## Scenario
 
 Azure API Management (APIM) provides a range of policies, metrics, and other features to enhance security, performance, and reliability for APIs serving your intelligent apps. Collectively, these features are called generative AI (GenAI) gateway capabilities.
 
@@ -22,6 +22,6 @@ Upon completion of this lab, you will have gained the following skills:
 - Integrate APIM-managed APIs into GenAI applications
 - Load balance LLM workloads across two Azure OpenAI service instances (Optional)
 
-## Lab Duration
+## Duration
 
 - **Estimated Time:** 60 minutes

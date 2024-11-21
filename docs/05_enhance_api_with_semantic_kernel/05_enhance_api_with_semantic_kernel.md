@@ -7,7 +7,7 @@ has_children: true
 
 # Exercise 05 - Enhance the API with Semantic Kernel orchestration
 
-## Lab Scenario
+## Scenario
 
 Semantic Kernel is an open-source SDK that lets you easily build agents that can call your existing code. You have already assisted Contoso Suites with incorporating Semantic Kernel into their existing API infrastructure.
 
@@ -22,6 +22,6 @@ After you complete this lab, you will be able to:
 * Assign skills to an agent
 * Use built-in AI services from Semantic Kernel in your applications
 
-## Lab Duration
+## Duration
 
 * **Estimated Time:** 60 minutes
