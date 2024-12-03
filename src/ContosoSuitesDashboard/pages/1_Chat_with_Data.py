@@ -31,7 +31,7 @@ def create_chat_completion(messages):
             {"role": m["role"], "content": m["content"]}
             for m in messages
         ],
-        stream=True
+        stream=True,
          extra_body={
               "data_sources": [
                   {
