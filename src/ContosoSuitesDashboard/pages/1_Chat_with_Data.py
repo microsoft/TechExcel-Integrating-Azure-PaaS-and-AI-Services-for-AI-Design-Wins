@@ -13,7 +13,11 @@ def create_chat_completion(messages):
     # The secrets themselves are stored in the .streamlit/secrets.toml file.
     aoai_endpoint = st.secrets["aoai"]["endpoint"]
     aoai_key = st.secrets["aoai"]["key"]
-    aoai_deployment_name = st.secrets["aoai"]["deployment_name"]
+    aoai_deployment_name = st.secrets["aoai"]["deployment_name"]  
+    search_endpoint = st.secrets["search"]["endpoint"]
+    search_key = st.secrets["search"]["key"]
+    search_index_name = st.secrets["search"]["index_name"]
+
 
     client = openai.AzureOpenAI(
         api_key=aoai_key,
@@ -21,14 +25,30 @@ def create_chat_completion(messages):
         azure_endpoint = aoai_endpoint
     )
     # Create and return a new chat completion request
-    return client.chat.completions.create(
-        model=aoai_deployment_name,
-        messages=[
-            {"role": m["role"], "content": m["content"]}
-            for m in messages
-        ],
-        stream=True
-    )
+      return client.chat.completions.create(
+          model=aoai_deployment_name,
+          messages=[
+              {"role": m["role"], "content": m["content"]}
+              for m in messages
+          ],
+          stream=True,
+          extra_body={
+              "data_sources": [
+                  {
+                      "type": "azure_search",
+                      "parameters": {
+                          "endpoint": search_endpoint,
+                          "index_name": search_index_name,
+                          "authentication": {
+                              "type": "api_key",
+                              "key": search_key
+                          }
+                      }
+                  }
+              ]
+          }
+      )
+
 
 def handle_chat_prompt(prompt):
     """Echo the user's prompt to the chat window.
