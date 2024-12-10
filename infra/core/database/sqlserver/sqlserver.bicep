@@ -113,7 +113,7 @@ resource appUserPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = 
   }
 }
 
-resource sqlAzureConnectionStringSercret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
+resource sqlAzureConnectionStringSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
   parent: keyVault
   name: connectionStringKey
   properties: {

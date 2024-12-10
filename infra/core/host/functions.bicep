@@ -81,7 +81,7 @@ module functions 'appservice.bicep' = {
   }
 }
 
-module storageOwnerRole '../../core/security/role.bicep' = if (storageManagedIdentity) {
+module storageOwnerRole '../security/role.bicep' = if (storageManagedIdentity) {
   name: 'search-index-contrib-role-api'
   params: {
     principalId: functions.outputs.identityPrincipalId
