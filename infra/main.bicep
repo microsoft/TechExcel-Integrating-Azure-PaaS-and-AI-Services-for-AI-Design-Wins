@@ -9,6 +9,13 @@ param environmentName string
 @description('Primary location for all resources')
 param location string
 
+@minLength(1)
+@description('Entra ID Login name of SQL Server admin user (i.e. phjirsa@microsoft.com)')
+param sqlAdminLoginName string
+
+@description('SID of the SQL Server admin user (aka Object ID)')
+param sqlAdminSid string
+
 // Optional parameters to override the default azd resource naming conventions.
 // Add the following to main.parameters.json to provide values:
 // "resourceGroupName": {
@@ -49,10 +56,6 @@ module userManagedIdentity 'core/security/user-managed-identity.bicep' = {
 
 @description('Id of the user or app to assign application roles')
 param principalId string = ''
-
-@description('Password for the SQL Server admin user.')
-@secure()
-param sqlAdminPassword string
 
 @description('Model deployments for OpenAI')
 var deployments = [
@@ -121,9 +124,12 @@ module database 'app/database.bicep' = {
     location: location
     cosmosAccountName: cosmosAccountName
     sqlServerName: sqlServerName
-    sqlAdminPassword: sqlAdminPassword
     tags: tags
     principalIds: [principalId, userManagedIdentity.outputs.principalId]
+    sqlAdminTenantId: subscription().tenantId
+    sqlAdminLogin: sqlAdminLoginName
+    sqlAdminSid: sqlAdminSid
+    sqlAppUserName: userManagedIdentity.outputs.name
   }
 }
 

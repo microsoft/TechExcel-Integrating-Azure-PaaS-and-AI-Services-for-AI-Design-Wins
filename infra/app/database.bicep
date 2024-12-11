@@ -2,16 +2,16 @@ param location string = resourceGroup().location
 param cosmosAccountName string
 param sqlServerName string
 
-@secure()
-param sqlAdminPassword string
+param sqlAdminTenantId string
+param sqlAdminLogin string
+param sqlAdminSid string
+param sqlAppUserName string
 
 param tags object = {}
 param principalIds array = []
 
 var cosmosDbDatabaseName = 'ContosoSuites'
-
 var sqlDatabaseName = 'ContosoSuitesBookings'
-var sqlAdminUsername = 'contosoadmin'
 
 @description('Creates an Azure Cosmos DB NoSQL API database.')
 module cosmosDbDatabase '../core/database/cosmos/sql/cosmos-sql-db.bicep' = {
@@ -26,28 +26,17 @@ module cosmosDbDatabase '../core/database/cosmos/sql/cosmos-sql-db.bicep' = {
 }
 
 @description('Creates an Azure SQL Server.')
-resource sqlServer 'Microsoft.Sql/servers@2021-11-01' = {
-  name: sqlServerName
-  location: location
-  tags: tags
-  properties: {    
-    administratorLogin: sqlAdminUsername
-    administratorLoginPassword: sqlAdminPassword
-  }
-}
-
-@description('Creates an Azure SQL Database.')
-resource sqlDatabase 'Microsoft.Sql/servers/databases@2021-11-01' = {
-  parent: sqlServer
-  name: sqlDatabaseName
-  location: location
-  properties: {
-    collation: 'SQL_Latin1_General_CP1_CI_AS'
-  }
-  sku: {
-    name: 'S2'
-    tier: 'Standard'
-    capacity: 50
+module sqlServer '../core/database/sqlserver/sqlserver.bicep' = {
+  name: 'sqlServer'
+  params: {
+    name: sqlServerName
+    databaseName: sqlDatabaseName
+    location: location
+    tags: tags
+    sqlAdminLogin: sqlAdminLogin
+    sqlAdminSid: sqlAdminSid
+    sqlAdminTenantId: sqlAdminTenantId
+    appUser: sqlAppUserName
   }
 }
 

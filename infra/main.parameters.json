@@ -10,6 +10,12 @@
     },
     "principalId": {
       "value": "${AZURE_PRINCIPAL_ID}"
+    },
+    "sqlAdminLoginName": {
+      "value": "${AZURE_SQL_ADMIN_LOGIN}"
+    },
+    "sqlAdminSid": {
+      "value": "${AZURE_SQL_ADMIN_SID}"
     }
   }
 }
