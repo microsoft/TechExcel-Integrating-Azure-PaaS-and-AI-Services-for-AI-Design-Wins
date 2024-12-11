@@ -55,16 +55,24 @@ param principalId string = ''
 param sqlAdminPassword string
 
 @description('Model deployments for OpenAI')
-param deployments array = [
+var deployments = [
   {
     name: 'gpt-4o'
+    model: {
+      format: 'OpenAI'
+      name: 'gpt-4o'
+      version: '2024-05-13'
+    }
     capacity: 40
-    version: '2024-05-13'
   }
   {
     name: 'text-embedding-ada-002'
+    model: {
+      format: 'OpenAI'
+      name: 'text-embedding-ada-002'
+      version: '2'
+    }
     capacity: 120
-    version: '2'
   }
 ]
 
@@ -161,7 +169,7 @@ module webapps 'app/webapps.bicep' = {
     registryName: registryName
     webAppNameApi: webAppNameApi
     webAppNameDash: webAppNameDash
-    managedIdentityName: userManagedIdentity.name
+    managedIdentityName: userManagedIdentity.outputs.name
     openAiProps: {
       endpoint: ai.outputs.openAIEndpoint
       deploymentName: 'gpt-4o'
@@ -188,7 +196,7 @@ module functionapp 'app/functionapp.bicep' = {
       embeddingDeploymentName: 'text-embedding-ada-002'
     }
     cosmosDbEndpoint: database.outputs.cosmos.dbEndpoint
-    managedIdentityName: userManagedIdentity.name
+    managedIdentityName: userManagedIdentity.outputs.name
   }
 }
 
@@ -202,7 +210,7 @@ module apiManagementService 'app/apim.bicep' = {
     tags: tags
     apiManagementServiceName: apiManagementServiceName
     restore: restore
-    managedIdentityName: userManagedIdentity.name
+    managedIdentityName: userManagedIdentity.outputs.name
   }
 }
 

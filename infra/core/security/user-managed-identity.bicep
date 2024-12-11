@@ -1,5 +1,5 @@
 param location string = resourceGroup().location
-param userManagedIdentityName string = 'userManagedIdentity'
+param userManagedIdentityName string
 param tags object = {}
 
 resource userManagedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2023-01-31' = {
@@ -10,3 +10,4 @@ resource userManagedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@2
 
 output id string = userManagedIdentity.id
 output principalId string = userManagedIdentity.properties.principalId
+output name string = userManagedIdentity.name

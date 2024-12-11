@@ -1,5 +1,5 @@
 param location string = resourceGroup().location
-param deployments array = []
+param deployments array
 param tags object = {}
 param restore bool = false
 param openAIName string

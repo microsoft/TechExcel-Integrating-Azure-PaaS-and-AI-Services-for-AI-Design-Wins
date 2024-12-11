@@ -45,17 +45,17 @@ resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
     siteConfig: {
       appSettings: [
         {
+          name: 'AZURE_CLIENT_ID'
+          value: managedIdentity.properties.clientId
+        }
+        {
           name: 'AzureWebJobsStorage__accountname'
           value: storageAccountName
         }
         {
           name: 'AzureOpenAIEndpoint'
           value: openAiProps.endpoint
-        }
-        {
-          name: 'AzureOpenAIKey'
-          value: openAiProps.apiKey
-        }
+        }        
         {
           name: 'CosmosDBConnection__accountEndpoint'
           value: cosmosDbEndpoint

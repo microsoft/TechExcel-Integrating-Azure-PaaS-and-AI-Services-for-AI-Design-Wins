@@ -104,11 +104,7 @@ resource appServiceApp 'Microsoft.Web/sites@2022-09-01' = {
         {
           name: 'CosmosDB__AccountEndpoint'
           value: cosmosDbEndpoint
-        }
-        {
-          name: 'AzureOpenAI__ApiKey'
-          value: openAiProps.apiKey
-        }
+        }        
         {
           name: 'AzureOpenAI__DeploymentName'
           value: openAiProps.deploymentName
