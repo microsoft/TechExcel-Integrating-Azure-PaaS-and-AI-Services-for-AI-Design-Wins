@@ -4,14 +4,14 @@ name: techexcel-contoso
 metadata:
   template: techexcel-contoso@0.0.1
 services:
-  contoso-api:
-    project: ./src/ContosoSuitesWebAPI
-    language: dotnet
-    host: appservice
-  contoso-dash:
-    project: ./src/ContosoSuitesDashboard
-    language: python
-    host: appservice
+  # contoso-api:
+  #   project: ./src/ContosoSuitesWebAPI
+  #   language: dotnet
+  #   host: appservice
+  # contoso-dash:
+  #   project: ./src/ContosoSuitesDashboard
+  #   language: python
+  #   host: appservice
   contoso-vectorizer:
     project: ./src/ContosoSuitesVectorizationFunction
     language: dotnet

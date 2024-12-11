@@ -3,32 +3,43 @@ param name string
 param location string = resourceGroup().location
 param tags object = {}
 
-param appUser string = 'appUser'
+param appUser string
 param databaseName string
-param keyVaultName string
-param sqlAdmin string = 'sqlAdmin'
-param connectionStringKey string = 'AZURE-SQL-CONNECTION-STRING'
+param sqlAdminLogin string
+param sqlAdminSid string
+param sqlAdminTenantId string
 
-@secure()
-param sqlAdminPassword string
-@secure()
-param appUserPassword string
-
-resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
+@description('Creates an Azure SQL Server.')
+resource sqlServer 'Microsoft.Sql/servers@2024-05-01-preview' = {
   name: name
   location: location
   tags: tags
-  properties: {
+  properties: { 
     version: '12.0'
     minimalTlsVersion: '1.2'
-    publicNetworkAccess: 'Enabled'
-    administratorLogin: sqlAdmin
-    administratorLoginPassword: sqlAdminPassword
+    administrators: {
+      administratorType: 'ActiveDirectory'
+      principalType: 'User'
+      login: sqlAdminLogin
+      sid: sqlAdminSid
+      tenantId: sqlAdminTenantId
+      azureADOnlyAuthentication: true
+    }
   }
 
+
+  @description('Creates an Azure SQL Database.')
   resource database 'databases' = {
     name: databaseName
     location: location
+    properties: {
+      collation: 'SQL_Latin1_General_CP1_CI_AS'
+    }
+    sku: {
+      name: 'S2'
+      tier: 'Standard'
+      capacity: 50
+    }
   }
 
   resource firewall 'firewallRules' = {
@@ -43,6 +54,7 @@ resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
   }
 }
 
+/*
 resource sqlDeploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: '${name}-deployment-script'
   location: location
@@ -56,11 +68,7 @@ resource sqlDeploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' 
       {
         name: 'APPUSERNAME'
         value: appUser
-      }
-      {
-        name: 'APPUSERPASSWORD'
-        secureValue: appUserPassword
-      }
+      }      
       {
         name: 'DBNAME'
         value: databaseName
@@ -69,62 +77,26 @@ resource sqlDeploymentScript 'Microsoft.Resources/deploymentScripts@2020-10-01' 
         name: 'DBSERVER'
         value: sqlServer.properties.fullyQualifiedDomainName
       }
-      {
-        name: 'SQLCMDPASSWORD'
-        secureValue: sqlAdminPassword
-      }
-      {
-        name: 'SQLADMIN'
-        value: sqlAdmin
-      }
     ]
 
     scriptContent: '''
-wget https://github.com/microsoft/go-sqlcmd/releases/download/v0.8.1/sqlcmd-v0.8.1-linux-x64.tar.bz2
-tar x -f sqlcmd-v0.8.1-linux-x64.tar.bz2 -C .
+wget https://github.com/microsoft/go-sqlcmd/releases/download/v1.8.0/sqlcmd-linux-amd64.tar.bz2
+tar x -f sqlcmd-linux-amd64.tar.bz2 -C .
 
 cat <<SCRIPT_END > ./initDb.sql
 drop user if exists ${APPUSERNAME}
 go
-create user ${APPUSERNAME} with password = '${APPUSERPASSWORD}'
+create user ${APPUSERNAME} FROM EXTERNAL PROVIDER
 go
 alter role db_owner add member ${APPUSERNAME}
 go
 SCRIPT_END
 
-./sqlcmd -S ${DBSERVER} -d ${DBNAME} -U ${SQLADMIN} -i ./initDb.sql
+./sqlcmd -S ${DBSERVER} -d ${DBNAME} -i ./initDb.sql
     '''
   }
 }
+*/
 
-resource sqlAdminPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
-  parent: keyVault
-  name: 'sqlAdminPassword'
-  properties: {
-    value: sqlAdminPassword
-  }
-}
-
-resource appUserPasswordSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
-  parent: keyVault
-  name: 'appUserPassword'
-  properties: {
-    value: appUserPassword
-  }
-}
-
-resource sqlAzureConnectionStringSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
-  parent: keyVault
-  name: connectionStringKey
-  properties: {
-    value: '${connectionString}; Password=${appUserPassword}'
-  }
-}
-
-resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
-  name: keyVaultName
-}
-
-var connectionString = 'Server=${sqlServer.properties.fullyQualifiedDomainName}; Database=${sqlServer::database.name}; User=${appUser}'
-output connectionStringKey string = connectionStringKey
+output endpoint string = sqlServer.properties.fullyQualifiedDomainName
 output databaseName string = sqlServer::database.name
