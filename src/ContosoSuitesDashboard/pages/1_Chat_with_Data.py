@@ -5,7 +5,8 @@ st.set_page_config(layout="wide")
 
 def create_chat_completion(messages):
     """Create and return a new chat completion request. Key assumptions:
-    - The Azure OpenAI endpoint, key, and deployment name are stored in Streamlit secrets."""
+    - The Azure OpenAI endpoint, key, and deployment name are stored in Streamlit secrets.
+    - The Azure AI Search endpoint, key, and index name are stored in Streamlit secrets. """
 
     # Retrieve secrets from the Streamlit secret store.
     # This is a secure way to store sensitive information that you don't want to expose in your code.
@@ -14,6 +15,10 @@ def create_chat_completion(messages):
     aoai_endpoint = st.secrets["aoai"]["endpoint"]
     aoai_key = st.secrets["aoai"]["key"]
     aoai_deployment_name = st.secrets["aoai"]["deployment_name"]
+
+    search_endpoint = st.secrets["search"]["endpoint"]
+    search_key = st.secrets["search"]["key"]
+    search_index_name = st.secrets["search"]["index_name"]
 
     client = openai.AzureOpenAI(
         api_key=aoai_key,
@@ -27,7 +32,22 @@ def create_chat_completion(messages):
             {"role": m["role"], "content": m["content"]}
             for m in messages
         ],
-        stream=True
+        stream=True,
+        extra_body={
+            "data_sources": [
+                {
+                    "type": "azure_search",
+                    "parameters": {
+                        "endpoint": search_endpoint,
+                        "index_name": search_index_name,
+                        "authentication": {
+                            "type": "api_key",
+                            "key": search_key
+                        }
+                    }
+                }
+            ]
+        }
     )
 
 def handle_chat_prompt(prompt):
