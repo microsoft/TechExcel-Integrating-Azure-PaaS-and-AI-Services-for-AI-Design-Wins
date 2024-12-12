@@ -1,6 +1,9 @@
 using System.Runtime.CompilerServices;
 using Microsoft.Data.SqlClient;
 using ContosoSuitesWebAPI.Entities;
+using Microsoft.SemanticKernel;
+using System.ComponentModel;
+
 
 namespace ContosoSuitesWebAPI.Services;
 
