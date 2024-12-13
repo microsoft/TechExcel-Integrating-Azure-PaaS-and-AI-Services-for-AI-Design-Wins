@@ -121,7 +121,6 @@ public class DatabaseService : IDatabaseService
 //}
 
     /// Added these 2 classes - Narendra
-    ///     ///     /// Narendra
     [KernelFunction]
     [Description("Get Bookings Missing Hotel Rooms")]
     /// Narendra
