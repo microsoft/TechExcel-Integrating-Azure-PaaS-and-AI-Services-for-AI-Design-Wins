@@ -106,15 +106,15 @@ app.MapGet("/Hotels/{hotelId}/Bookings/", async (int hotelId) =>
 
 // Retrieve the bookings for a specific hotel that are after a specified date.
 app.MapGet("/Hotels/{hotelId}/Bookings/{min_date}", async (int hotelId, DateTime min_date) => 
-//{
-//    var bookings = await app.Services.GetRequiredService<IDatabaseService>().GetBookingsByHotelAndMinimumDate(hotelId, min_date);
-//    return bookings;
-//})
-//    .WithName("GetRecentBookingsForHotel")
-//    .WithOpenApi();
-//
+{
+    var bookings = await app.Services.GetRequiredService<IDatabaseService>().GetBookingsByHotelAndMinimumDate(hotelId, min_date);
+    return bookings;
+})
+    .WithName("GetRecentBookingsForHotel")
+    .WithOpenApi();
+
 // This endpoint is used to send a message to the Azure OpenAI endpoint.
-//app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
+app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
 //{
 //    var message = await Task.FromResult(request.Form["message"]);
 //    
