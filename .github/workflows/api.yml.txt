@@ -1,7 +1,7 @@
 name: API Deployment
 env:
   imageName: "${{ secrets.ACR_LOGIN_SERVER }}/techexcel/csapi:${{github.run_number}}"
-  appName: ${{ vars.APP_PREFIX }}-api
+  appName: app-${{ vars.APP_PREFIX }}-api
   appPath: ./src/ContosoSuitesWebAPI
 on:
   push:
