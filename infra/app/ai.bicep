@@ -6,6 +6,7 @@ param openAIName string
 param speechServiceName string
 param languageServiceName string
 param searchServiceName string
+param managedIdentityName string
 
 @description('Creates an Azure AI Search service.')
 module searchService '../core/search/search-services.bicep' = {
@@ -16,6 +17,7 @@ module searchService '../core/search/search-services.bicep' = {
     sku: {
       name: 'standard'
     }
+    managedIdentityName: managedIdentityName
   }
 }
 
