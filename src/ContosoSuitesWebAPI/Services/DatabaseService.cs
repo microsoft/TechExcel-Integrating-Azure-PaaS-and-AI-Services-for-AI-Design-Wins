@@ -118,10 +118,10 @@ public class DatabaseService : IDatabaseService
 
         return bookings;
     }
-//}
+////////}
 
     /// Added these 2 classes - Narendra
-    [KernelFunction]
+[KernelFunction]
     [Description("Get Bookings Missing Hotel Rooms")]
     /// Narendra
     public async Task<IEnumerable<Booking>> GetBookingsMissingHotelRooms()
@@ -169,7 +169,7 @@ public class DatabaseService : IDatabaseService
 
 
     /// Narendra
-    [KernelFunction]
+[KernelFunction]
     [Description("Get Bookings With Multiple Hotel Rooms")]
     /// Narendra
     public async Task<IEnumerable<Booking>> GetBookingsWithMultipleHotelRooms()
