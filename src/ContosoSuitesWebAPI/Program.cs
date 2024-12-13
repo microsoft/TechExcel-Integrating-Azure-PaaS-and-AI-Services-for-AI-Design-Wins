@@ -1,3 +1,8 @@
+//Narendra
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Microsoft.SemanticKernel.ChatCompletion;
+//Narendra
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
 using ContosoSuitesWebAPI.Agents;
@@ -30,6 +35,21 @@ builder.Services.AddSingleton<CosmosClient>((_) =>
     return client;
 });
 
+//Narendra
+builder.Services.AddSingleton<Kernel>((_) =>
+{
+    IKernelBuilder kernelBuilder = Kernel.CreateBuilder();
+    kernelBuilder.AddAzureOpenAIChatCompletion(
+        deploymentName: builder.Configuration["AzureOpenAI:DeploymentName"]!,
+        endpoint: builder.Configuration["AzureOpenAI:Endpoint"]!,
+        apiKey: builder.Configuration["AzureOpenAI:ApiKey"]!
+    );
+    kernelBuilder.Plugins.AddFromType<DatabaseService>();
+    return kernelBuilder.Build();
+});
+
+//Narendra
+
 // Create a single instance of the AzureOpenAIClient to be shared across the application.
 builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 {
@@ -41,6 +61,12 @@ builder.Services.AddSingleton<AzureOpenAIClient>((_) =>
 });
 
 var app = builder.Build();
+//Narendra
+var config = new ConfigurationBuilder()
+    .AddUserSecrets<Program>()
+    .AddEnvironmentVariables()
+    .Build();
+//Narendra
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -63,7 +89,8 @@ app.MapGet("/", async () =>
 // Retrieve the set of hotels from the database.
 app.MapGet("/Hotels", async () => 
 {
-    throw new NotImplementedException();
+    var hotels = await app.Services.GetRequiredService<IDatabaseService>().GetHotels();
+    return hotels;
 })
     .WithName("GetHotels")
     .WithOpenApi();
@@ -71,25 +98,38 @@ app.MapGet("/Hotels", async () =>
 // Retrieve the bookings for a specific hotel.
 app.MapGet("/Hotels/{hotelId}/Bookings/", async (int hotelId) => 
 {
-    throw new NotImplementedException();
+    var bookings = await app.Services.GetRequiredService<IDatabaseService>().GetBookingsForHotel(hotelId);
+    return bookings;
 })
     .WithName("GetBookingsForHotel")
     .WithOpenApi();
 
 // Retrieve the bookings for a specific hotel that are after a specified date.
 app.MapGet("/Hotels/{hotelId}/Bookings/{min_date}", async (int hotelId, DateTime min_date) => 
-{
-    throw new NotImplementedException();
-})
-    .WithName("GetRecentBookingsForHotel")
-    .WithOpenApi();
-
+//{
+//    var bookings = await app.Services.GetRequiredService<IDatabaseService>().GetBookingsByHotelAndMinimumDate(hotelId, min_date);
+//    return bookings;
+//})
+//    .WithName("GetRecentBookingsForHotel")
+//    .WithOpenApi();
+//
 // This endpoint is used to send a message to the Azure OpenAI endpoint.
-app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
+//app.MapPost("/Chat", async Task<string> (HttpRequest request) =>
+//{
+//    var message = await Task.FromResult(request.Form["message"]);
+//    
+//    return "This endpoint is not yet available.";
+//})
 {
     var message = await Task.FromResult(request.Form["message"]);
-    
-    return "This endpoint is not yet available.";
+    var kernel = app.Services.GetRequiredService<Kernel>();
+    var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
+    var executionSettings = new OpenAIPromptExecutionSettings
+    {
+        ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
+    };
+    var response = await chatCompletionService.GetChatMessageContentAsync(message.ToString(), executionSettings, kernel);
+    return response?.Content!;
 })
     .WithName("Chat")
     .WithOpenApi();
