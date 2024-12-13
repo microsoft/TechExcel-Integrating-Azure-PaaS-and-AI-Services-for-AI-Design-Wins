@@ -118,7 +118,7 @@ public class DatabaseService : IDatabaseService
 
         return bookings;
     }
-}
+//}
 
     /// Added these 2 classes - Narendra
     ///     ///     /// Narendra
@@ -215,3 +215,4 @@ public class DatabaseService : IDatabaseService
 
         return bookings;
     }
+}
