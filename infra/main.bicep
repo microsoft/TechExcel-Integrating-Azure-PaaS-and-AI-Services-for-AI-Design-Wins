@@ -160,6 +160,7 @@ module ai 'app/ai.bicep' = {
     languageServiceName: languageServiceName
     searchServiceName: searchServiceName
     deployments: deployments
+    managedIdentityName: userManagedIdentity.outputs.name
   }
 }
 
