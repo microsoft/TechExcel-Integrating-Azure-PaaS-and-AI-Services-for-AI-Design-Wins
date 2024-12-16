@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 def create_chat_completion(messages):
     """Create and return a new chat completion request. Key assumptions:
-    - The Azure OpenAI endpoint, key, and deployment name are stored in Streamlit secrets."""
+    - The Azure OpenAI endpoint and deployment name are stored in Streamlit secrets."""
 
     # Retrieve secrets from the Streamlit secret store.
     # This is a secure way to store sensitive information that you don't want to expose in your code.
