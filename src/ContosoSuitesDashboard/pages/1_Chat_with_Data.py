@@ -1,22 +1,27 @@
 import streamlit as st
 import openai
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
 st.set_page_config(layout="wide")
 
 def create_chat_completion(messages):
     """Create and return a new chat completion request. Key assumptions:
-    - The Azure OpenAI endpoint, key, and deployment name are stored in Streamlit secrets."""
+    - The Azure OpenAI endpoint and deployment name are stored in Streamlit secrets."""
 
     # Retrieve secrets from the Streamlit secret store.
     # This is a secure way to store sensitive information that you don't want to expose in your code.
     # Learn more about Streamlit secrets here: https://docs.streamlit.io/develop/concepts/connections/secrets-management
     # The secrets themselves are stored in the .streamlit/secrets.toml file.
+
+    token_provider = get_bearer_token_provider(
+        DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default"
+    )
+    
     aoai_endpoint = st.secrets["aoai"]["endpoint"]
-    aoai_key = st.secrets["aoai"]["key"]
     aoai_deployment_name = st.secrets["aoai"]["deployment_name"]
 
     client = openai.AzureOpenAI(
-        api_key=aoai_key,
+        azure_ad_token_provider=token_provider,
         api_version="2024-06-01",
         azure_endpoint = aoai_endpoint
     )

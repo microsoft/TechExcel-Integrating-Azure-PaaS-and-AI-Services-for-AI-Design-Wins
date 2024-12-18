@@ -9,6 +9,7 @@ from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.textanalytics import ExtractiveSummaryAction, AbstractiveSummaryAction
 from azure.cosmos import CosmosClient
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 import openai
 
 
@@ -64,12 +65,15 @@ def make_azure_openai_chat_request(system, call_contents):
     """Create and return a new chat completion request. Key assumptions:
     - Azure OpenAI endpoint, key, and deployment name stored in Streamlit secrets."""
 
+    token_provider = get_bearer_token_provider(
+        DefaultAzureCredential(), "https://cognitiveservices.azure.com/.default"
+    )
+    
     aoai_endpoint = st.secrets["aoai"]["endpoint"]
-    aoai_key = st.secrets["aoai"]["key"]
     aoai_deployment_name = st.secrets["aoai"]["deployment_name"]
 
     client = openai.AzureOpenAI(
-        api_key=aoai_key,
+        azure_ad_token_provider=token_provider,
         api_version="2024-06-01",
         azure_endpoint = aoai_endpoint
     )
@@ -176,8 +180,9 @@ def save_transcript_to_cosmos_db(transcript_item):
         call_transcript (string), and request_vector (list).
     - Cosmos DB endpoint, key, and database name stored in Streamlit secrets."""
 
+    cosmos_credentials = DefaultAzureCredential()
+
     cosmos_endpoint = st.secrets["cosmos"]["endpoint"]
-    cosmos_key = st.secrets["cosmos"]["key"]
     cosmos_database_name = st.secrets["cosmos"]["database_name"]
     cosmos_container_name = "CallTranscripts"
 
