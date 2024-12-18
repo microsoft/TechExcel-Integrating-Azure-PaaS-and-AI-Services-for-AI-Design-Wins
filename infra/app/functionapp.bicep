@@ -49,6 +49,10 @@ resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
           value: managedIdentity.properties.clientId
         }
         {
+          name: 'AZURE_TENANT_ID'
+          value: subscription().tenantId
+        }
+        {
           name: 'AzureWebJobsStorage__accountname'
           value: storageAccountName
         }
@@ -63,6 +67,10 @@ resource functionApp 'Microsoft.Web/sites@2022-03-01' = {
         {
           name: 'CosmosDBConnection__clientId'
           value: managedIdentity.properties.clientId
+        }
+        {
+          name: 'CosmosDBConnection__credential'
+          value: 'managedidentity'
         }
         {
           name: 'EmbeddingDeploymentName'
