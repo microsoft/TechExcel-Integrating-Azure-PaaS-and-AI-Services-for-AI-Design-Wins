@@ -1,5 +1,6 @@
 using Azure;
 using Azure.AI.OpenAI;
+using Azure.Identity;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using OpenAI.Embeddings;
@@ -28,19 +29,16 @@ namespace ContosoSuites.Functions
         {
             var endpointUrl = Environment.GetEnvironmentVariable("AzureOpenAIEndpoint");
             if (string.IsNullOrEmpty(endpointUrl))
-                throw new ArgumentNullException("AzureOpenAIEndpoint", "AzureOpenAIEndpoint is required to run this function.");
-
-            var azureOpenAIKey = Environment.GetEnvironmentVariable("AzureOpenAIKey");
-            if (string.IsNullOrEmpty(azureOpenAIKey))
-                throw new ArgumentNullException("AzureOpenAIKey", "AzureOpenAIKey is required to run this function.");
+                throw new ArgumentNullException("AzureOpenAIEndpoint", "AzureOpenAIEndpoint is required to run this function.");            
 
             var deploymentName = Environment.GetEnvironmentVariable("EmbeddingDeploymentName");
             if (string.IsNullOrEmpty(deploymentName))
                 throw new ArgumentNullException("EmbeddingDeploymentName", "EmbeddingDeploymentName is required to run this function.");
 
+            var tenantId = Environment.GetEnvironmentVariable("AZURE_TENANT_ID");
             _logger = loggerFactory.CreateLogger<CosmosChangeFeedVectorization>();
             var oaiEndpoint = new Uri(endpointUrl);
-            var credentials = new AzureKeyCredential(azureOpenAIKey);
+            var credentials = new DefaultAzureCredential(new DefaultAzureCredentialOptions { TenantId = tenantId });
             var openAIClient = new AzureOpenAIClient(oaiEndpoint, credentials);
             _embeddingClient = openAIClient.GetEmbeddingClient(deploymentName);   
         }
@@ -49,11 +47,11 @@ namespace ContosoSuites.Functions
         /// Listens for changes to maintenance requests in Cosmos DB and generates vector embeddings for new requests.
         /// </summary>
         [Function("VectorizeMaintenanceRequests")]
-        [CosmosDBOutput(DatabaseName, ContainerName, Connection = "CosmosDBConnectionString")]
+        [CosmosDBOutput(DatabaseName, ContainerName, Connection = "CosmosDBConnection")]
         public object Run([CosmosDBTrigger(
             databaseName: DatabaseName,
             containerName: ContainerName,
-            Connection = "CosmosDBConnectionString",
+            Connection = "CosmosDBConnection",
             LeaseContainerName = "leases",
             CreateLeaseContainerIfNotExists = true)] IReadOnlyList<MaintenanceRequest> input)
         {

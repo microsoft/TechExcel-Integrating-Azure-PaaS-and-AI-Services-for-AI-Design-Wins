@@ -1,7 +1,7 @@
 name: Dashboard Deployment
 env:
   imageName: "${{ secrets.ACR_LOGIN_SERVER }}/techexcel/csdash:${{github.run_number}}"
-  appName: ${{ vars.APP_PREFIX }}-dash
+  appName: app-${{ vars.APP_PREFIX }}-dash
   appPath: ./src/ContosoSuitesDashboard
 on:
   push:
