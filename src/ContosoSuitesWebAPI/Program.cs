@@ -32,7 +32,7 @@ builder.Services.AddSingleton<IDatabaseService, DatabaseService>((_) =>
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
 
-    string userAssignedClientId = builder.Configuration["CosmosDB:ClientId"]!;
+    string userAssignedClientId = builder.Configuration["AZURE_CLIENT_ID"]!;
     var credential = new DefaultAzureCredential(
         new DefaultAzureCredentialOptions
         {
