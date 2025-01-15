@@ -31,8 +31,16 @@ builder.Services.AddSingleton<IDatabaseService, DatabaseService>((_) =>
 // Create a single instance of the CosmosClient to be shared across the application.
 builder.Services.AddSingleton<CosmosClient>((_) =>
 {
+
+    string userAssignedClientId = builder.Configuration["CosmosDB:ClientId"]!;
+    var credential = new DefaultAzureCredential(
+        new DefaultAzureCredentialOptions
+        {
+            ManagedIdentityClientId = userAssignedClientId
+        });
     CosmosClient client = new(
-        connectionString: builder.Configuration["CosmosDB:ConnectionString"]!
+        accountEndpoint: builder.Configuration["CosmosDB:AccountEndpoint"]!,
+        tokenCredential: credential
     );
     return client;
 });
