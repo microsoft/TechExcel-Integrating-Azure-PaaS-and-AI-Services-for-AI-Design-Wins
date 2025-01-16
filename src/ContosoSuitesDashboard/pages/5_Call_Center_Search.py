@@ -13,10 +13,12 @@ def make_azure_openai_embedding_request(text):
 def make_cosmos_db_vector_search_request(query_embedding, max_results=5, minimum_similarity_score=0.5):
     """Create and return a new vector search request. Key assumptions:
     - Query embedding is a list of floats based on a search string.
-    - Cosmos DB endpoint, key, and database name stored in Streamlit secrets."""
+    - Cosmos DB endpoint, client_id, and database name stored in Streamlit secrets."""
+
+    cosmos_client_id = st.secrets["cosmos"]["client_id"]
+    cosmos_credentials = DefaultAzureCredential(managed_identity_client_id=cosmos_client_id)
 
     cosmos_endpoint = st.secrets["cosmos"]["endpoint"]
-    cosmos_key = st.secrets["cosmos"]["key"]
     cosmos_database_name = st.secrets["cosmos"]["database_name"]
     cosmos_container_name = "CallTranscripts"
 
