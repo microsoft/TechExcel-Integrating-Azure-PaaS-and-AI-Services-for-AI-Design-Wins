@@ -178,9 +178,10 @@ def save_transcript_to_cosmos_db(transcript_item):
     """Save embeddings to Cosmos DB vector store. Key assumptions:
     - transcript_item is a JSON object containing call_id (int), 
         call_transcript (string), and request_vector (list).
-    - Cosmos DB endpoint, key, and database name stored in Streamlit secrets."""
+    - Cosmos DB endpoint, client_id, and database name stored in Streamlit secrets."""
 
-    cosmos_credentials = DefaultAzureCredential()
+    cosmos_client_id = st.secrets["cosmos"]["client_id"]
+    cosmos_credentials = DefaultAzureCredential(managed_identity_client_id=cosmos_client_id)
 
     cosmos_endpoint = st.secrets["cosmos"]["endpoint"]
     cosmos_database_name = st.secrets["cosmos"]["database_name"]
