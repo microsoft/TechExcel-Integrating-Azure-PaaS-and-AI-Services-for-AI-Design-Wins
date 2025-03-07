@@ -27,5 +27,5 @@ The lab is available as GitHub pages [here](https://microsoft.github.io/TechExce
 
 For running this lab you will need:
 
-* An Azure subscription with access to Azure OpenAI.
+* An Azure subscription with access to Azure OpenAI. This needs to be an **external** subscription.
 * A desktop, laptop, or virtual machine and access to install software on that machine.
